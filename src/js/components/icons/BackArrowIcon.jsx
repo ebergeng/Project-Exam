@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import BackArrow from "../icons/arrow-right-icon.svg";
+import { ReactComponent as BackArrow } from "../../../assets/icons/arrow-right-icon.svg";
 
 const BackArrowContainer = styled.div`
   position: relative;
