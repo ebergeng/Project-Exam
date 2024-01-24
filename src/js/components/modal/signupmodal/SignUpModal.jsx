@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import SignUpModalHeader from "./SignUpModalHeader";
-import ToggleSwitch from "./ToggleSwitch";
 import SignUpModalForm from "./SignUpModalForm";
 
 const SignUpWrapper = styled.div`
@@ -15,7 +14,6 @@ const SignUpModal = () => {
   return (
     <SignUpWrapper>
       <SignUpModalHeader />
-      <ToggleSwitch />
       <SignUpModalForm />
     </SignUpWrapper>
   );

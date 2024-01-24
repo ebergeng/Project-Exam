@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import useManagerStateStore from "../../../storage/modalstate/useManagerState";
+import ToggleSwitch from "./ToggleSwitch";
 
 const schima = yup
   .object({
@@ -43,6 +44,8 @@ const SignUpModalForm = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
+      <ToggleSwitch />
+
       <Lable htmlFor="name">Name</Lable>
       <Input type="name" id="name" name="name" {...register("name")} />
 
