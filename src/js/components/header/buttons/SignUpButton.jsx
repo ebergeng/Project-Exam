@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { useState } from "react";
 import SignUpModal from "../../modal/signupmodal/SignUpModal";
 import Modal from "../../modal/Modal";
+import useModalStateStore from "../../../storage/modalstate/useModalState";
 
 const Button = styled.button`
   background-color: transparent;
@@ -11,14 +11,14 @@ const Button = styled.button`
 `;
 
 const SignUpButton = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
+  const { modalStateRegister, setModalStateRegister } = useModalStateStore();
+  const openModal = () => setModalStateRegister(true);
+  const closeModal = () => setModalStateRegister(false);
 
   return (
     <>
       <Button onClick={openModal}>Sign Up</Button>
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
+      <Modal isOpen={modalStateRegister} onClose={closeModal}>
         <SignUpModal />
       </Modal>
     </>

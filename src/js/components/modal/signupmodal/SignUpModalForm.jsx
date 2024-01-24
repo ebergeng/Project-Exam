@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import useManagerStateStore from "../../../storage/modalstate/useManagerState";
 import ToggleSwitch from "./ToggleSwitch";
+import { registerUser } from "../../../api/auth/registerUser";
 
 const schima = yup
   .object({
@@ -37,8 +38,12 @@ const SignUpModalForm = () => {
     resolver: yupResolver(schima),
   });
 
-  function onSubmit(data) {
+  async function onSubmit(data) {
     setValue("venueManager", managerState);
+
+    const response = await registerUser(data);
+    console.log(response);
+
     console.log(data);
   }
 

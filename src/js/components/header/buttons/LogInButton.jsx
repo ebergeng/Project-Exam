@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { useState } from "react";
 import Modal from "../../modal/Modal";
 import LogInModal from "../../modal/loginmodal/LoginModal";
+import useModalStateStore from "../../../storage/modalstate/useModalState";
 
 const Button = styled.button`
   background-color: transparent;
@@ -11,14 +11,13 @@ const Button = styled.button`
 `;
 
 const LoginButton = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
-
+  const { modalStateLogin, setModalStateLogin } = useModalStateStore();
+  const openModal = () => setModalStateLogin(true);
+  const closeModal = () => setModalStateLogin(false);
   return (
     <>
       <Button onClick={openModal}>Log In</Button>
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
+      <Modal isOpen={modalStateLogin} onClose={closeModal}>
         <LogInModal />
       </Modal>
     </>

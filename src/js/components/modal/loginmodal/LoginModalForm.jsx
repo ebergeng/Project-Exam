@@ -2,6 +2,10 @@ import { Input, Lable, Form, FormButton } from "../../../../styles/formStyles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { loginUser } from "../../../api/auth/loginUser";
+import { useState } from "react";
+import Loader from "../../common/Loader";
+import useModalStateStore from "../../../storage/modalstate/useModalState";
 
 const schima = yup
   .object({
@@ -18,6 +22,11 @@ const schima = yup
   .required();
 
 const LogInModalForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const modalStateLogin = useModalStateStore(
+    (state) => state.setModalStateLogin,
+  );
+
   const {
     register,
     handleSubmit,
@@ -26,8 +35,21 @@ const LogInModalForm = () => {
     resolver: yupResolver(schima),
   });
 
-  function onSubmit(data) {
-    console.log(data);
+  async function onSubmit(data) {
+    setIsLoading(true);
+    const response = await loginUser(data);
+    console.log(response);
+    if (response.errors) {
+      console.log("hey");
+    } else {
+      modalStateLogin(false);
+    }
+
+    setIsLoading(false);
+  }
+
+  if (isLoading) {
+    return <Loader />;
   }
 
   return (

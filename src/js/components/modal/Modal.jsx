@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import BackArrowIcon from "../icons/BackArrowIcon";
 
@@ -24,19 +23,8 @@ const slideIn = keyframes`
     }
 `;
 
-const slideOut = keyframes`
-    from {
-        transform: translateX(0%);
-    }
-    to {
-        transform: translateX(100%);
-    }
-`;
-
 // eslint-disable-next-line no-unused-vars
-const ModalContent = styled(({ isClosing, ...divProps }) => (
-  <div {...divProps} />
-))`
+const ModalContent = styled(({ ...divProps }) => <div {...divProps} />)`
   background: var(--color-modal);
   backdrop-filter: blur(5px);
   padding: 20px;
@@ -48,8 +36,7 @@ const ModalContent = styled(({ isClosing, ...divProps }) => (
   position: fixed;
   right: 0;
   top: 0;
-  animation: ${(props) => (props.isClosing ? slideOut : slideIn)} 0.3s ease-out
-    forwards;
+  animation: ${slideIn} 0.3s ease-out forwards;
 `;
 
 const CloseButton = styled.button`
@@ -62,22 +49,15 @@ const CloseButton = styled.button`
 
 // eslint-disable-next-line react/prop-types
 const Modal = ({ isOpen, onClose, children }) => {
-  const [isClosing, setIsClosing] = useState();
-
   const handleClose = () => {
-    setIsClosing(true);
-
-    setTimeout(() => {
-      setIsClosing(false);
-      onClose();
-    }, 250);
+    onClose();
   };
 
   if (!isOpen) return null;
 
   return (
     <ModalOverlay onClick={handleClose}>
-      <ModalContent onClick={(e) => e.stopPropagation()} isClosing={isClosing}>
+      <ModalContent onClick={(e) => e.stopPropagation()}>
         <CloseButton onClick={handleClose}>
           <BackArrowIcon />
         </CloseButton>
