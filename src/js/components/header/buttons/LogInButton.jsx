@@ -1,6 +1,6 @@
 import styled from "styled-components";
+import { useState } from "react";
 import Modal from "../../modal/Modal";
-import useModalStore from "../../../storage/modalstate/useModalStore";
 import LogInModal from "../../modal/loginmodal/LoginModal";
 
 const Button = styled.button`
@@ -11,19 +11,15 @@ const Button = styled.button`
 `;
 
 const LoginButton = () => {
-  const isOpen = useModalStore((state) => state.isOpen);
-  const setIsOpen = useModalStore((state) => state.setIsOpen);
-
-  function handlModal() {
-    setIsOpen();
-  }
+  const [isModalOpen, setModalOpen] = useState(false);
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
 
   return (
     <>
-      <Button onClick={handlModal}>Log In</Button>
-      <Modal open={isOpen}>
-        {" "}
-        <LogInModal />{" "}
+      <Button onClick={openModal}>Log In</Button>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <LogInModal />
       </Modal>
     </>
   );
