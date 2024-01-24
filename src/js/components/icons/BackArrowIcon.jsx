@@ -8,13 +8,7 @@ const BackArrowContainer = styled.div`
   fill: #cecece;
   border: 2px solid #cecece;
   border-radius: 5px;
-
-  .icon {
-    height: 35px;
-    width: 35px;
-    padding: 5px;
-    transform: translate(0, 2px);
-  }
+  padding: 3px;
 
   &:hover {
     fill: white;
@@ -22,10 +16,15 @@ const BackArrowContainer = styled.div`
   }
 `;
 
+const Img = styled.img`
+  height: 25px;
+  width: 25px;
+`;
+
 const BackArrowIcon = () => {
   return (
     <BackArrowContainer>
-      <img src={BackArrow} alt="" />
+      <Img src={BackArrow} alt="" />
     </BackArrowContainer>
   );
 };

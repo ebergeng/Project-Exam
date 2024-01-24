@@ -2,7 +2,6 @@ import { Input, Lable, Form, FormButton } from "../../../../styles/formStyles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import Test from "../../../../assets/test";
 
 const schima = yup
   .object({
@@ -35,7 +34,6 @@ const LogInModalForm = () => {
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Lable htmlFor="email">Email</Lable>
       <Input type="email" name="email" id="email" {...register("email")} />
-      <Test />
       <Lable htmlFor="password">Password</Lable>
       <Input
         type="password"
