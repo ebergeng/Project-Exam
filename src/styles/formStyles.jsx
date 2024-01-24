@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Input = styled.input`
-  height: 40px;
+  height: 35px;
   border-radius: 5px;
   border: none;
   font-size: 18px;
@@ -13,6 +13,7 @@ export const Form = styled.form`
   flex-direction: column;
   width: 100%;
   padding: 0px 25px;
+  overflow-y: auto;
 `;
 
 export const Lable = styled.label`
@@ -29,7 +30,7 @@ export const FormButton = styled.input`
   width: 100%;
   background-color: var(--color-secondary);
   border: none;
-  height: 40px;
+  height: 35px;
   font-size: 16px;
   font-weight: bolder;
   border-radius: 5px;

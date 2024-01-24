@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import useManagerStateStore from "../../../storage/modalstate/useManagerState";
 
 const HeaderText = styled.h2`
   color: white;
@@ -6,9 +7,11 @@ const HeaderText = styled.h2`
 `;
 
 const SignUpModalHeader = () => {
+  const managerState = useManagerStateStore((state) => state.managerState);
+
   return (
     <HeaderText>
-      Customer <br />
+      {managerState === true ? "Manager" : "Customer"} <br />
       Sign Up
     </HeaderText>
   );

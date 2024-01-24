@@ -37,7 +37,8 @@ const slideOut = keyframes`
 const ModalContent = styled(({ isClosing, ...divProps }) => (
   <div {...divProps} />
 ))`
-  background: var(--color-primary);
+  background: var(--color-modal);
+  backdrop-filter: blur(5px);
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
