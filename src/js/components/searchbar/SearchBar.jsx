@@ -154,10 +154,9 @@ const SearchBar = () => {
                 onChange={handleSelector}
               >
                 <option value="">Country</option>
-                <option value="norway">Norge</option>
-                <option value="sweden">Sverige</option>
-                <option value="denmark">Danmark</option>
-                {/* Legg til flere land etter behov */}
+                <option value="norway">Norway</option>
+                <option value="sweden">Sweeden</option>
+                <option value="denmark">DanmaK</option>
               </Selector>
 
               <Selector
@@ -170,7 +169,6 @@ const SearchBar = () => {
                 <option value="Europe">Europe</option>
                 <option value="africa">Africa</option>
                 <option value="asia">Asia</option>
-                {/* Legg til flere land etter behov */}
               </Selector>
             </SelectorWrapper>
             <FormButton type="submit" value="Search" />
