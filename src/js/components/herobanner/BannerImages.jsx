@@ -1,14 +1,5 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import image1 from "../../../assets/images/image1.jpeg";
-import image2 from "../../../assets/images/image2.jpeg";
-import image3 from "../../../assets/images/image3.jpeg";
-import image4 from "../../../assets/images/image4.jpeg";
-import image5 from "../../../assets/images/image5.jpeg";
-import image6 from "../../../assets/images/image6.jpeg";
-import image7 from "../../../assets/images/image7.jpeg";
-import image8 from "../../../assets/images/image8.jpeg";
-import image9 from "../../../assets/images/image9.jpeg";
 
 const ImageContainer = styled.div`
   width: 120px;
@@ -33,6 +24,7 @@ const Front = styled.div`
   height: 100%;
   backface-visibility: hidden;
   background-size: cover;
+  background-position: center;
 `;
 
 const Back = styled.div`
@@ -42,22 +34,11 @@ const Back = styled.div`
   backface-visibility: hidden;
   transform: rotateY(180deg);
   background-size: cover;
+  background-position: center;
 `;
 
-export default function BannerImages() {
+export default function BannerImages({ images }) {
   const [isFlipped, setIsFlipped] = useState(false);
-
-  const images = [
-    image1,
-    image2,
-    image3,
-    image4,
-    image5,
-    image6,
-    image7,
-    image8,
-    image9,
-  ];
 
   const [frontBgImg, setFrontBgImg] = useState(
     () => images[Math.floor(Math.random() * images.length)],

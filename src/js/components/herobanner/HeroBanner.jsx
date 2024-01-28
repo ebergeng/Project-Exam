@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import BannerImages from "./BannerImages";
+import useVenueStore from "../../storage/apiStore";
 
 const Wrapper = styled.div`
   display: flex;
@@ -23,6 +24,7 @@ const HeroBanner = () => {
   const [isFlipping, setIsFlipping] = useState(false);
   const [numElements, setNumElements] = useState(12);
   const [numColumns, setNumColumns] = useState(6);
+  const images = useVenueStore((state) => state.mediaUrls);
 
   useEffect(() => {
     const handleResize = () => {
@@ -83,12 +85,16 @@ const HeroBanner = () => {
   return (
     <Wrapper>
       <HeroBannerContainer numcolumns={numColumns}>
-        {[...Array(numElements)].map((_, index) => (
-          <BannerImages
-            key={index}
-            shouldFlip={isFlipping && index % 2 === 0}
-          />
-        ))}
+        {images.length < 40
+          ? null
+          : [...Array(numElements)].map((img, index) => (
+              <BannerImages
+                images={images}
+                index={index}
+                key={img + index.toString()}
+                shouldFlip={isFlipping && index % 2 === 0}
+              />
+            ))}
       </HeroBannerContainer>
     </Wrapper>
   );

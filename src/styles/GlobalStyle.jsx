@@ -6,9 +6,11 @@ const GlobalStyle = createGlobalStyle`
         --color-secondary: #52A49A;
         --color-accent: #E87B7B;
         --color-background: #F4F4F4; 
+        --color-background-hover: #e0dddd; 
         --color-foreground: #333333; 
+        --color-text: #333333; 
         --color-modal: #00336680;
-        --box-shadow: 2px 1px 3px #333333;
+        --box-shadow: -1px 1px 5px #333333;
     }
 
     * {
@@ -18,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
 
     body{
         margin: 0;
+        height: 100vh;
     }
 `;
 

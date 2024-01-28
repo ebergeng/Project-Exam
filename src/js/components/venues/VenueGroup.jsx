@@ -1,42 +1,63 @@
 import styled from "styled-components";
 import Venue from "./Venue";
+import useVenueStore from "../../storage/apiStore";
 import { useState } from "react";
-//import { getVenues } from "../../api/venues/getVenues"
 
 const Container = styled.div`
-  background-color: lightblue;
-  height: 25vh;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   padding: 10px;
+  align-items: center;
+  height: 100%;
 `;
 
 const Wrapper = styled.div`
-  background-color: gray;
   width: 100%;
+  max-width: 1400px;
   height: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+`;
+
+const MoreButton = styled.button`
+  margin: 5px;
+  width: 120px;
+  background-color: var(--color-background);
+  box-shadow: var(--box-shadow);
+  border: none;
+  height: 28px;
+  border-radius: 5px;
+  &:hover {
+    background-color: var(--color-background-hover);
+    cursor: pointer;
+  }
 `;
 
 const VenueGroup = () => {
-  const [venues, setVenues] = useState([]);
+  //const { data, isLoading, isError } = useApi(GET_VENUES_URL)
+  const topRated = useVenueStore((state) => state.topRated);
+  const [slice, setSlice] = useState(3);
 
-  async function fetchVenues() {
-    console.log("hey");
-    //const fetch =  setVenues( await getVenues())
-
-    setVenues([1]);
-    console.log(venues);
+  function addColumn() {
+    setSlice(slice + 5);
   }
 
   return (
     <Container>
+      <h2>Top Rated</h2>
+
       <Wrapper>
-        <Venue />
-        <Venue />
-        <Venue />
-        <button onClick={fetchVenues}>getVen</button>
+        {topRated.length > 1
+          ? topRated
+              .map((venue) => <Venue key={venue.id} venue={venue} />)
+              .slice(slice - slice, slice)
+          : null}
       </Wrapper>
+      <MoreButton onClick={addColumn}>See More</MoreButton>
     </Container>
   );
 };
