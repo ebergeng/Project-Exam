@@ -22,6 +22,10 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         height: 100vh;
     }
+    
+    main {
+        position: relative;
+    }
 `;
 
 export default GlobalStyle;

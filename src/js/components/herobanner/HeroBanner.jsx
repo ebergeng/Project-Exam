@@ -17,7 +17,10 @@ const HeroBannerContainer = styled.div`
   align-items: baseline;
   align-content: center;
   overflow: hidden;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+  @media (max-width: 650px) {
+    margin-bottom: 10px;
+  }
 `;
 
 const HeroBanner = () => {

@@ -1,9 +1,9 @@
 import GetImages from "../api/getImages";
 import GetTopRated from "../api/topRated";
-import VenueGroup from "../components/venues/VenueGroup";
 import useVenueStore from "../storage/apiStore";
 import { getVenues } from "../api/venues/getVenues";
 import { useEffect } from "react";
+import SearchBar from "../components/searchbar/SearchBar";
 
 const HomePage = () => {
   GetImages();
@@ -16,7 +16,6 @@ const HomePage = () => {
     const limit = 100;
     let offset = 0;
     let hasMore = true;
-    console.log("hey");
     async function fetchAllVenues() {
       while (hasMore) {
         const data = await getVenues(limit, offset);
@@ -34,7 +33,7 @@ const HomePage = () => {
 
   return (
     <>
-      <VenueGroup />
+      <SearchBar />
       <button onClick={() => console.log(venues)}>see all venues</button>
     </>
   );
