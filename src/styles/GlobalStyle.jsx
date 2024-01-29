@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
         --color-text: #333333; 
         --color-modal: #00336680;
         --box-shadow: -1px 1px 5px #333333;
+        --btn-hover: #4d968d;
     }
 
     * {

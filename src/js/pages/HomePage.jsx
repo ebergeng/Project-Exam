@@ -3,7 +3,7 @@ import GetTopRated from "../api/topRated";
 import useVenueStore from "../storage/apiStore";
 import { getVenues } from "../api/venues/getVenues";
 import { useEffect } from "react";
-import SearchBar from "../components/searchbar/SearchBar";
+import SearchBar2 from "../components/searchbar/SearchBar2";
 
 const HomePage = () => {
   GetImages();
@@ -33,7 +33,7 @@ const HomePage = () => {
 
   return (
     <>
-      <SearchBar />
+      <SearchBar2 />
       <button onClick={() => console.log(venues)}>see all venues</button>
     </>
   );

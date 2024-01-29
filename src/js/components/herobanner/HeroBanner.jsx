@@ -6,7 +6,11 @@ import useVenueStore from "../../storage/apiStore";
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  background-color: var(--color-primary);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 26, 51, 1) 0%,
+    rgba(0, 51, 102, 1) 100%
+  );
 `;
 
 const HeroBannerContainer = styled.div`

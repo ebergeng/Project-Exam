@@ -8,6 +8,9 @@ const SearchBar = () => {
   const venues = useVenueStore((state) => state.venues);
   const addFilterVenues = useVenueStore((state) => state.addFilterVenues);
   const filterdVenues = useVenueStore((state) => state.filterdVenues);
+  const setDispayFilterdVenues = useVenueStore(
+    (state) => state.setDispayFilterdVenues,
+  );
 
   const [filter, setFilter] = useState({
     wifi: false,
@@ -58,7 +61,9 @@ const SearchBar = () => {
             filter.continent.toLowerCase()
           : true) &&
         (filter.searchField.length > 0
-          ? item.name.toLowerCase().includes(filter.searchField.toLowerCase())
+          ? item.location.city
+              .toLowerCase()
+              .includes(filter.searchField.toLowerCase())
           : true),
     );
 
@@ -66,18 +71,23 @@ const SearchBar = () => {
       (obj, index, self) => index === self.findIndex((t) => t.id === obj.id),
     );
 
-    if (filterdVenues.length === venues.length) {
+    if (uniqueArray.length === venues.length) {
       addFilterVenues([]);
     } else {
       addFilterVenues(uniqueArray);
     }
   }, [filter]);
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    setDispayFilterdVenues();
+  }
+
   return (
     <Container>
       <Wrapper>
         <SearchHeader />
-        <Form>
+        <Form onSubmit={(e) => handleSubmit(e)}>
           <FormWrappOne>
             <CheckBoxWrapper>
               <div>
@@ -137,7 +147,9 @@ const SearchBar = () => {
                       to={`/${venue.id}`}
                       key={`${venue.id}_search${index}`}
                     >
-                      <Li>{venue.name}</Li>
+                      <Li>
+                        {venue.location.city}, {venue.name}
+                      </Li>
                     </Link>
                   );
                 })}
