@@ -7,10 +7,11 @@ import { Link } from "react-router-dom";
 import searchIcon from "../../../assets/icons/search.svg";
 import settingIcon from "../../../assets/icons/setting.png";
 import ToggleSwitch2 from "./ToggleSwitch2";
-import WifiIcon from "../../../assets/icons/wifi.svg";
-import PetsIcon from "../../../assets/icons/pets.svg";
-import ParkingIcon from "../../../assets/icons/parking.svg";
-import BreakfastIcon from "../../../assets/icons/breakfast.svg";
+import WifiIcon from "../../ui/icons/wifi/WifiIcon";
+import PetsIcon from "../../ui/icons/pets/PetsIcon";
+import ParkingIcon from "../../ui/icons/parking/ParkingIcon";
+import BreakfastIcon from "../../ui/icons/breakfast/BreakfastIcon";
+import GuestAmount from "./GuestAmount";
 
 const SearchBar2 = () => {
   const [filterisOpen, setFilterIsOpen] = useState(false);
@@ -115,7 +116,9 @@ const SearchBar2 = () => {
                 checked={searchTherm.wifi}
                 onChange={handleInputChange}
               />
-              <img src={WifiIcon} alt="icon for wifi" />
+              <Label htmlFor="wifi">
+                <WifiIcon color={searchTherm.wifi ? "#003366" : "#8d8d8d"} />
+              </Label>
               <Label ison={searchTherm.wifi.toString()} htmlFor="wifi">
                 Wifi
               </Label>
@@ -126,7 +129,11 @@ const SearchBar2 = () => {
                 checked={searchTherm.parking}
                 onChange={handleInputChange}
               />
-              <img src={ParkingIcon} alt="icon for parking" />
+              <Label htmlFor="parking">
+                <ParkingIcon
+                  color={searchTherm.parking ? "#003366" : "#8d8d8d"}
+                />
+              </Label>
               <Label ison={searchTherm.parking.toString()} htmlFor="parking">
                 Parking
               </Label>
@@ -137,7 +144,11 @@ const SearchBar2 = () => {
                 checked={searchTherm.breakfast}
                 onChange={handleInputChange}
               />
-              <img src={BreakfastIcon} alt="icon for breakfast" />
+              <Label htmlFor="breakfast">
+                <BreakfastIcon
+                  color={searchTherm.breakfast ? "#003366" : "#8d8d8d"}
+                />
+              </Label>
               <Label
                 ison={searchTherm.breakfast.toString()}
                 htmlFor="breakfast"
@@ -151,13 +162,14 @@ const SearchBar2 = () => {
                 checked={searchTherm.pets}
                 onChange={handleInputChange}
               />
-              <img src={PetsIcon} alt="icon for pets" />
+              <Label htmlFor="pets">
+                <PetsIcon color={searchTherm.pets ? "#003366" : "#8d8d8d"} />
+              </Label>
               <Label ison={searchTherm.pets.toString()} htmlFor="pets">
                 Pets
               </Label>
             </CheckboxWrapper>
-
-            <GuestWrapper></GuestWrapper>
+            <GuestAmount />
           </FilterContainer>
         </WrapperLeft>
         <WrapperRight>
@@ -269,15 +281,16 @@ const FilterContainer = styled.div`
   position: absolute;
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
-  top: -110px;
+  top: -130px;
+
   width: 95%;
-  padding: 10px;
+  padding: 10px 20px;
   max-width: 400px;
-  display: ${({ isopen }) => (isopen === "true" ? "grid" : "none")};
+  display: ${({ isopen }) => (isopen === "true" ? "flex" : "none")};
   background-color: #ffffff99;
   box-shadow: var(--box-shadow);
   border-radius: 10px;
-  grid-template-columns: 1fr 2fr;
+  justify-content: space-between;
   align-items: center;
   font-size: 12px;
   overflow: hidden;
@@ -286,13 +299,13 @@ const FilterContainer = styled.div`
 const CheckboxWrapper = styled.div`
   display: grid;
   grid-template-columns: auto auto auto;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
   img {
     height: 16px;
   }
 `;
-
-const GuestWrapper = styled.div``;
 
 const SearchBtn = styled.button`
   height: 70px;
@@ -349,7 +362,6 @@ const Label = styled.label`
   font-size: 12px;
   font-weight: 600;
   color: var(--color-forground);
-  text-decoration: ${({ ison }) => (ison === "true" ? "none" : "line-through")};
   cursor: pointer;
 `;
 

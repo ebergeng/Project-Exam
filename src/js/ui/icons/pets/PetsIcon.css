@@ -1,0 +1,8 @@
+.pets-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.pets-icon:hover {
+  fill: var(--color-primary);
+}

@@ -1,0 +1,7 @@
+.breakfast-icon {
+  width: 18px;
+  height: 18px;
+}
+.breakfast-icon:hover path {
+  fill: var(--color-primary);
+}

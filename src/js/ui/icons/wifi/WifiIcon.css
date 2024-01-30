@@ -1,0 +1,8 @@
+.wifi-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.wifi-icon:hover {
+  fill: var(--color-primary);
+}

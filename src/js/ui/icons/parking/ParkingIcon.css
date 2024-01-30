@@ -1,0 +1,8 @@
+.parking-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.parking-icon:hover path {
+  fill: var(--color-primary);
+}
