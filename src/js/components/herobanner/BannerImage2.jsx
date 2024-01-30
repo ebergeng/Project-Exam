@@ -96,7 +96,6 @@ const UnderLineHeader = styled.div`
 `;
 
 function BannerImages2({ venue }) {
-  console.log(venue);
   const [isFlipped, setIsFlipped] = useState(false);
 
   const [frontVenue, setFrontVenue] = useState(
@@ -136,7 +135,7 @@ function BannerImages2({ venue }) {
           <Link to={`/${frontVenue.id}`} key={`${frontVenue.id}`}>
             <Filter>
               <CardHeader>
-                {frontVenue.name.trim(20)}
+                {frontVenue.name}
                 <UnderLineHeader />
               </CardHeader>
 
@@ -152,7 +151,7 @@ function BannerImages2({ venue }) {
           <Link to={`/${backVenue.id}`} key={`${backVenue.id}`}>
             <Filter>
               <CardHeader>
-                {backVenue.name.trim(20)}
+                {backVenue.name}
                 <UnderLineHeader />
               </CardHeader>
               <CardFooter>

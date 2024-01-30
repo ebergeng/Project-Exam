@@ -6,6 +6,11 @@ import useVenueStore from "../../storage/apiStore";
 import { Link } from "react-router-dom";
 import searchIcon from "../../../assets/icons/search.svg";
 import settingIcon from "../../../assets/icons/setting.png";
+import ToggleSwitch2 from "./ToggleSwitch2";
+import WifiIcon from "../../../assets/icons/wifi.svg";
+import PetsIcon from "../../../assets/icons/pets.svg";
+import ParkingIcon from "../../../assets/icons/parking.svg";
+import BreakfastIcon from "../../../assets/icons/breakfast.svg";
 
 const SearchBar2 = () => {
   const [filterisOpen, setFilterIsOpen] = useState(false);
@@ -16,7 +21,7 @@ const SearchBar2 = () => {
   const [searchTherm, setSearchTherm] = useState({
     when: [startDate, endDate],
     where: "",
-    wifi: false,
+    wifi: true,
     parking: false,
     breakfast: false,
     pets: false,
@@ -60,6 +65,7 @@ const SearchBar2 = () => {
       ...prevSearch,
       [name]: type === "checkbox" ? checked : value,
     }));
+    //console.log(searchTherm.wifi.toString())
   };
 
   useEffect(() => {
@@ -83,12 +89,12 @@ const SearchBar2 = () => {
               selected={endDate ? endDate : null}
               onChange={(date) => setEndDate(date)}
             />
-            <BtnWrapper isOpen={filterisOpen}>
+            <BtnWrapper isopen={filterisOpen.toString()}>
               <FilterBtn
-                isOpen={filterisOpen}
+                isopen={filterisOpen.toString()}
                 onClick={() => setFilterIsOpen(!filterisOpen)}
               >
-                <SettingIcon src={settingIcon} />
+                <SettingIcon src={settingIcon} alt="icon for filter" />
               </FilterBtn>
             </BtnWrapper>
           </DateWrapper>
@@ -101,10 +107,62 @@ const SearchBar2 = () => {
               onChange={handleInputChange}
             />
           </SearchWrapper>
+          <FilterContainer isopen={filterisOpen.toString()}>
+            <CheckboxWrapper>
+              <ToggleSwitch2
+                name="wifi"
+                id="wifi"
+                checked={searchTherm.wifi}
+                onChange={handleInputChange}
+              />
+              <img src={WifiIcon} alt="icon for wifi" />
+              <Label ison={searchTherm.wifi.toString()} htmlFor="wifi">
+                Wifi
+              </Label>
+
+              <ToggleSwitch2
+                name="parking"
+                id="parking"
+                checked={searchTherm.parking}
+                onChange={handleInputChange}
+              />
+              <img src={ParkingIcon} alt="icon for parking" />
+              <Label ison={searchTherm.parking.toString()} htmlFor="parking">
+                Parking
+              </Label>
+
+              <ToggleSwitch2
+                name="breakfast"
+                id="breakfast"
+                checked={searchTherm.breakfast}
+                onChange={handleInputChange}
+              />
+              <img src={BreakfastIcon} alt="icon for breakfast" />
+              <Label
+                ison={searchTherm.breakfast.toString()}
+                htmlFor="breakfast"
+              >
+                Breakfast
+              </Label>
+
+              <ToggleSwitch2
+                name="pets"
+                id="pets"
+                checked={searchTherm.pets}
+                onChange={handleInputChange}
+              />
+              <img src={PetsIcon} alt="icon for pets" />
+              <Label ison={searchTherm.pets.toString()} htmlFor="pets">
+                Pets
+              </Label>
+            </CheckboxWrapper>
+
+            <GuestWrapper></GuestWrapper>
+          </FilterContainer>
         </WrapperLeft>
         <WrapperRight>
           <SearchBtn>
-            <SearchIcon src={searchIcon} />
+            <SearchIcon src={searchIcon} alt="icon for search" />
           </SearchBtn>
         </WrapperRight>
       </SearchForm>
@@ -124,43 +182,6 @@ const SearchBar2 = () => {
           </Ul>
         </SerchResulte>
       )}
-      <CheckBoxArea isOpen={filterisOpen}>
-        <Label htmlFor="wifi">Wifi</Label>
-        <CheckBox
-          type="checkbox"
-          checked={searchTherm.wifi}
-          name="wifi"
-          id="wifi"
-          onChange={handleInputChange}
-        />
-
-        <Label htmlFor="parking">Parking</Label>
-        <CheckBox
-          type="checkbox"
-          name="parking"
-          id="parking"
-          checked={searchTherm.parking}
-          onChange={handleInputChange}
-        />
-
-        <Label htmlFor="breakfast">Breakfast</Label>
-        <CheckBox
-          type="checkbox"
-          name="breakfast"
-          id="breakfast"
-          checked={searchTherm.breakfast}
-          onChange={handleInputChange}
-        />
-
-        <Label htmlFor="pets">Pets Allowerd</Label>
-        <CheckBox
-          type="checkbox"
-          name="pets"
-          id="pets"
-          checked={searchTherm.pets}
-          onChange={handleInputChange}
-        />
-      </CheckBoxArea>
     </Container>
   );
 };
@@ -244,23 +265,34 @@ const WrapperRight = styled.div`
   width: 20%;
 `;
 
-const CheckBoxArea = styled.div`
+const FilterContainer = styled.div`
   position: absolute;
-  top: -100px;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  top: -110px;
   width: 95%;
   padding: 10px;
-  max-width: 500px;
-  display: ${({ isOpen }) => (isOpen ? "grid" : "none")};
-  background-color: white;
+  max-width: 400px;
+  display: ${({ isopen }) => (isopen === "true" ? "grid" : "none")};
+  background-color: #ffffff99;
   box-shadow: var(--box-shadow);
   border-radius: 10px;
-  grid-template-columns: auto auto;
+  grid-template-columns: 1fr 2fr;
   align-items: center;
   font-size: 12px;
   overflow: hidden;
 `;
 
-const CheckBox = styled.input``;
+const CheckboxWrapper = styled.div`
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 5px;
+  img {
+    height: 16px;
+  }
+`;
+
+const GuestWrapper = styled.div``;
 
 const SearchBtn = styled.button`
   height: 70px;
@@ -286,17 +318,21 @@ const BtnWrapper = styled.div`
   display: flex;
   justify-content: center;
   cursor: pointer;
-  background-color: ${({ isOpen }) => (isOpen ? "#e7e7e7" : "white")};
+  background-color: ${({ isopen }) =>
+    isopen === "true" ? "#e7e7e7" : "white"};
 
   &:hover {
     background-color: #e7e7e7;
   }
 `;
 
-const FilterBtn = styled.button`
+const FilterBtn = styled.div`
   background-color: transparent;
   border: none;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 `;
 
@@ -311,15 +347,20 @@ const SettingIcon = styled.img`
 
 const Label = styled.label`
   font-size: 12px;
-  color: gray;
+  font-weight: 600;
+  color: var(--color-forground);
+  text-decoration: ${({ ison }) => (ison === "true" ? "none" : "line-through")};
+  cursor: pointer;
 `;
 
 const SerchResulte = styled.div`
   width: 95%;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
   max-width: 500px;
   max-height: 40vh;
   position: absolute;
-  background-color: var(--color-background);
+  background-color: #ffffff99;
   top: 105px;
   border-radius: 10px;
   box-shadow: var(--box-shadow);
@@ -329,6 +370,7 @@ const SerchResulte = styled.div`
 const Ul = styled.ul`
   width: 100%;
   border-radius: 5px;
+  padding: 0;
 `;
 
 const Li = styled.li`
