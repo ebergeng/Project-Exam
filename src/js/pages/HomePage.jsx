@@ -3,7 +3,6 @@ import GetTopRated from "../api/topRated";
 import useVenueStore from "../storage/apiStore";
 import { getVenues } from "../api/venues/getVenues";
 import { useEffect } from "react";
-import WifiIcon from "../ui/icons/wifi/WifiIcon";
 import SearchBar from "../components/searchbar/SearchBar";
 
 const HomePage = () => {
@@ -35,9 +34,7 @@ const HomePage = () => {
   return (
     <>
       <SearchBar />
-
       <button onClick={() => console.log(venues)}>see all venues</button>
-      <WifiIcon />
     </>
   );
 };

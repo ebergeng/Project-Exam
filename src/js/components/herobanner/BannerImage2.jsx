@@ -132,7 +132,7 @@ function BannerImages2({ venue }) {
     <ImageContainer>
       <ContainerInner isflipped={isFlipped.toString()}>
         <Front style={{ backgroundImage: `url(${frontVenue.media[0]})` }}>
-          <Link to={`/${frontVenue.id}`} key={`${frontVenue.id}`}>
+          <Link to={`venue/${frontVenue.id}`} key={`${frontVenue.id}`}>
             <Filter>
               <CardHeader>
                 {frontVenue.name}
