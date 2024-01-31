@@ -1,0 +1,9 @@
+.minus-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.minus-icon:hover path {
+  cursor: pointer;
+  fill: var(--color-secondary);
+}
