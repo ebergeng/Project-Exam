@@ -1,10 +1,10 @@
 import "./WifiIcon.css";
 
-const WifiIcon = ({ color }) => {
+const WifiIcon = ({ color, width = "34", height = "34" }) => {
   return (
     <svg
-      width="34"
-      height="34"
+      width={width}
+      height={height}
       viewBox="0 0 34 34"
       fill={color}
       className="wifi-icon"

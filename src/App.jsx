@@ -1,7 +1,7 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import LayOut from "./js/layout/Layout";
 import HomePage from "./js/pages/HomePage";
-import VenuePage from "./js/pages/VenuePage";
+import VenuePage from "./js/pages/venuepage/VenuePage";
 
 function App() {
   return (

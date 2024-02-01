@@ -57,6 +57,9 @@ const Filter = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.205);
+  }
 `;
 
 const CardHeader = styled.div`

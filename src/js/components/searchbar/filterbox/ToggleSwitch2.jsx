@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-// Styled component for the toggle switch container
 const ToggleSwitchContainer = styled.label`
   position: relative;
   display: inline-block;
@@ -8,7 +7,6 @@ const ToggleSwitchContainer = styled.label`
   height: 18px;
 `;
 
-// Styled component for the slider
 const Slider = styled.span`
   position: absolute;
   cursor: pointer;
@@ -42,7 +40,6 @@ const Slider = styled.span`
   }
 `;
 
-// Styled component for the input checkbox
 const InputCheckbox = styled.input.attrs({ type: "checkbox" })`
   display: none;
 

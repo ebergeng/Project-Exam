@@ -37,7 +37,11 @@ const CheckBoxWrapper = () => {
         onChange={() => setChecked("wifi")}
       />
       <Label htmlFor="wifi">
-        <WifiIcon color={filter.wifi ? "#003366" : "#8d8d8d"} />
+        <WifiIcon
+          color={filter.wifi ? "#003366" : "#8d8d8d"}
+          width={"20"}
+          height={"20"}
+        />
       </Label>
       <Label ison={filter.wifi} htmlFor="wifi">
         Wifi
@@ -50,7 +54,11 @@ const CheckBoxWrapper = () => {
         onChange={() => setChecked("parking")}
       />
       <Label htmlFor="parking">
-        <ParkingIcon color={filter.parking ? "#003366" : "#8d8d8d"} />
+        <ParkingIcon
+          color={filter.parking ? "#003366" : "#8d8d8d"}
+          width={"20"}
+          height={"20"}
+        />
       </Label>
       <Label ison={filter.parking} htmlFor="parking">
         Parking
@@ -63,7 +71,11 @@ const CheckBoxWrapper = () => {
         onChange={() => setChecked("breakfast")}
       />
       <Label htmlFor="breakfast">
-        <BreakfastIcon color={filter.breakfast ? "#003366" : "#8d8d8d"} />
+        <BreakfastIcon
+          color={filter.breakfast ? "#003366" : "#8d8d8d"}
+          width={"20"}
+          height={"20"}
+        />
       </Label>
       <Label ison={filter.breakfast} htmlFor="breakfast">
         Breakfast
@@ -76,7 +88,11 @@ const CheckBoxWrapper = () => {
         onChange={() => setChecked("pets")}
       />
       <Label htmlFor="pets">
-        <PetsIcon color={filter.pets ? "#003366" : "#8d8d8d"} />
+        <PetsIcon
+          color={filter.pets ? "#003366" : "#8d8d8d"}
+          width={"20"}
+          height={"20"}
+        />
       </Label>
       <Label ison={filter.pets} htmlFor="pets">
         Pets

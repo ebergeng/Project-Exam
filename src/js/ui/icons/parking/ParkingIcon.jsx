@@ -1,10 +1,10 @@
 import "./ParkingIcon.css";
 
-const ParkingIcon = ({ color }) => {
+const ParkingIcon = ({ color, width = "34", height = "34" }) => {
   return (
     <svg
-      width="38"
-      height="37"
+      width={width}
+      height={height}
       viewBox="0 0 38 37"
       fill={color}
       className="parking-icon"

@@ -1,6 +1,6 @@
 import "./IconStyle.css";
 
-const GuestIcon = () => {
+const GuestIcon = ({ color = ["#036", " #52a49a"] }) => {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24">
       <defs>
@@ -11,7 +11,7 @@ const GuestIcon = () => {
             width="24"
             height="24"
             transform="translate(2242 -2991)"
-            fill="#036"
+            fill={color[0]}
             stroke="#707070"
             strokeWidth="1"
           />
@@ -36,7 +36,7 @@ const GuestIcon = () => {
             r="2.875"
             transform="translate(7.287 11.27)"
             fill="none"
-            stroke="#036"
+            stroke={color[0]}
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeMiterlimit="10"
@@ -58,7 +58,7 @@ const GuestIcon = () => {
             data-name="Path 30"
             d="M12.532,18.782a6.043,6.043,0,0,0-8.2,4.088,2.718,2.718,0,0,0-.142.832c0,.395.253.425.494.636h6.109"
             fill="none"
-            stroke="#036"
+            stroke={color[0]}
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeMiterlimit="10"
@@ -70,7 +70,7 @@ const GuestIcon = () => {
               data-name="Path 31"
               d="M27.552,23.326c0,.042,0,.111,0,.154,0,.4-.322.646-.628.857H12.968c-.308-.212-.63-.354-.63-.857a3.509,3.509,0,0,1,.181-1.067,7.644,7.644,0,0,1,14.343-1.442"
               fill="none"
-              stroke="#52a49a"
+              stroke={color[1]}
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeMiterlimit="10"
@@ -81,7 +81,7 @@ const GuestIcon = () => {
               data-name="Path 32"
               d="M12.341,23.326c0,.042,0,.111,0,.154,0,.4.322.646.628.857H26.925c.308-.212.63-.354.63-.857a3.509,3.509,0,0,0-.181-1.067,7.644,7.644,0,0,0-14.343-1.442"
               fill="none"
-              stroke="#52a49a"
+              stroke={color[1]}
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeMiterlimit="10"
@@ -95,7 +95,7 @@ const GuestIcon = () => {
               r="3.663"
               transform="translate(16.284 7.46)"
               fill="none"
-              stroke="#52a49a"
+              stroke={color[1]}
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeMiterlimit="10"

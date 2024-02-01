@@ -6,6 +6,7 @@ const useVenueStore = create((set) => ({
   mediaUrls: [],
   topRated: [],
   venues: [],
+  singleVenue: [],
   filter: {
     wifi: false,
     parking: false,
@@ -23,6 +24,7 @@ const useVenueStore = create((set) => ({
     set((state) => ({
       dispayFilterdVenues: state.filterdVenues.length > 0 ? true : false,
     })),
+  setSingleVenue: (venue) => set({ singleVenue: venue }),
 }));
 
 export default useVenueStore;

@@ -1,10 +1,10 @@
 import "./PetsIcon.css";
 
-const PetsIcon = ({ color }) => {
+const PetsIcon = ({ color, width = "34", height = "34" }) => {
   return (
     <svg
-      width="18"
-      height="18"
+      width={width}
+      height={height}
       viewBox="0 0 34 34"
       fill={color}
       className="pets-icon"

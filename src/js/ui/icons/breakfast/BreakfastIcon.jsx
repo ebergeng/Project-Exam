@@ -1,8 +1,13 @@
 import "./BreakfastIcon.css";
 
-const BreakfastIcon = ({ color }) => {
+const BreakfastIcon = ({ color, width = "34", height = "34" }) => {
   return (
-    <svg width="34" height="34" viewBox="0 0 34 34" className="breakfast-icon">
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 34 34"
+      className="breakfast-icon"
+    >
       <path
         id="Path_35"
         data-name="Path 35"

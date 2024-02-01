@@ -30,7 +30,6 @@ const Layout = ({ children }) => {
       <Header />
       <HeroBanner2>{contentForHeroBanner()}</HeroBanner2>
       <main>{children}</main>
-      <footer>HEI</footer>
     </>
   );
 };
