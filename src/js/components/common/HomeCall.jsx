@@ -14,7 +14,7 @@ const HomeBtnLabel = styled.label`
   border-radius: 50%;
   position: fixed;
   bottom: 95px;
-  right: 85px;
+  left: 55px;
   display: flex;
   justify-content: center;
   align-items: center;

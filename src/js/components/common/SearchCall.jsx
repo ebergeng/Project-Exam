@@ -16,7 +16,7 @@ const SearchBtnLabel = styled.label`
   border-radius: 50%;
   position: fixed;
   bottom: 50px;
-  right: 55px;
+  left: 25px;
   display: flex;
   justify-content: center;
   align-items: center;

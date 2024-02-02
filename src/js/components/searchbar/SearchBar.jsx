@@ -35,7 +35,6 @@ const WrapperLeft = styled.div`
   display: flex;
   flex-direction: column;
   width: 80%;
-  border-right: 1px solid #bbbbbb;
 `;
 
 const WrapperRight = styled.div`
