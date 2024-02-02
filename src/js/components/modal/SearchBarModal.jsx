@@ -19,7 +19,7 @@ const ModalContent = styled(({ ...divProps }) => <div {...divProps} />)`
   width: 100%;
   max-width: 500px;
   position: fixed;
-  top: 220px;
+  top: 20%;
 `;
 
 const SearchBarModal = ({ isOpen, onClose, children }) => {
