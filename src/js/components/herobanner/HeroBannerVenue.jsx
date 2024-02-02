@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import useVenueStore from "../../storage/apiStore";
 import { GetVenue } from "../../api/venues/GetVenue";
 import styled from "styled-components";
+import useSearchModalStore from "../../storage/modalstate/searchModalstate";
 
 const Wrapper = styled.div``;
 
@@ -28,6 +29,10 @@ const Location = styled.div`
 const HeroBannerVenue = ({ venueId }) => {
   const venue = useVenueStore((state) => state.singleVenue);
   const addVenue = useVenueStore((state) => state.setSingleVenue);
+  const setSearchStateOff = useSearchModalStore(
+    (state) => state.setSearchStateOff,
+  );
+
   useEffect(() => {
     async function fetchVenue() {
       const data = await GetVenue(venueId);
@@ -39,7 +44,9 @@ const HeroBannerVenue = ({ venueId }) => {
       console.log(venue);
     }
     fetchVenue();
-  }, [addVenue]);
+
+    setSearchStateOff(); // sets searchModalState to false if its open
+  }, [venueId]);
 
   if (!venue.name) {
     return <div>Loading....</div>;

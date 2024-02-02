@@ -90,7 +90,7 @@ const SearchResult = () => {
           <Ul>
             {filterdVenues.map((venue) => {
               return (
-                <Link to={`venue/${venue.id}`} key={`${venue.id}`}>
+                <Link to={`/venue/${venue.id}`} key={`${venue.id}`}>
                   <Li>
                     {venue.location.city}, {venue.location.country},{" "}
                     {venue.name}

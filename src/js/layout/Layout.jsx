@@ -3,12 +3,37 @@ import HeroBannerHome from "../components/herobanner/HeroBannerHome";
 import HeroBanner2 from "../components/herobanner/Herobanner2";
 import Header from "../components/header/Header";
 import HeroBannerVenue from "../components/herobanner/HeroBannerVenue";
-
-// ... other imports ...
+import SearchCall from "../components/common/SearchCall";
+import HomeCall from "../components/common/HomeCall";
+import { useEffect, useState } from "react";
 
 const Layout = ({ children }) => {
   const location = useLocation();
-  console.log(location.pathname);
+  const [showCalls, setShowCalls] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Konverter 30vh til piksler.
+      // Du kan justere dette basert på nøyaktig hvor langt ned du vil at brukeren skal skrolle før komponentene vises.
+      const vh = Math.max(
+        document.documentElement.clientHeight || 0,
+        window.innerHeight || 0,
+      );
+      const threshold = vh * 0.3; // 30% av viewport-høyden
+
+      if (window.scrollY > threshold) {
+        setShowCalls(true);
+      } else {
+        setShowCalls(false);
+      }
+    };
+
+    // Legg til scroll event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Fjern event listener når komponenten unmounts for å forhindre memory leaks
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []); // Tom dependency array betyr at effekten kun kjører når komponenten mounts
 
   const contentForHeroBanner = () => {
     if (location.pathname === "/") {
@@ -30,6 +55,17 @@ const Layout = ({ children }) => {
       <Header />
       <HeroBanner2>{contentForHeroBanner()}</HeroBanner2>
       <main>{children}</main>
+      {location.pathname === "/" && showCalls ? (
+        <>
+          <SearchCall />
+          <HomeCall />
+        </>
+      ) : null || location.pathname === "/" ? null : (
+        <>
+          <SearchCall />
+          <HomeCall />
+        </>
+      )}
     </>
   );
 };

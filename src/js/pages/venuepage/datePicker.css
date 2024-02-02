@@ -5,3 +5,7 @@
   border: none;
   outline: none;
 }
+
+.react-datepicker__tab-loop {
+  position: absolute;
+}

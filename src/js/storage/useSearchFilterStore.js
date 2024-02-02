@@ -52,6 +52,20 @@ const useSearchFilterStore = create((set) => ({
         guests: state.filter.guests > 1 ? state.filter.guests - 1 : 1,
       },
     })),
+  resetFilter: () =>
+    set(() => ({
+      filter: {
+        from: "",
+        to: "",
+        where: "",
+        guests: 1,
+        wifi: false,
+        parking: false,
+        breakfast: false,
+        pets: false,
+        filterIsOpen: false,
+      },
+    })),
 }));
 
 export default useSearchFilterStore;

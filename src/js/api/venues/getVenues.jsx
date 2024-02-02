@@ -15,5 +15,3 @@ export async function getVenues(limit, offset) {
     return null;
   }
 }
-
-export async function FetchAllVenues() {}

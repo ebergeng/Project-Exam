@@ -26,6 +26,7 @@ const GlobalStyle = createGlobalStyle`
     
     main {
         position: relative;
+        height: 200vh;
     }
 `;
 

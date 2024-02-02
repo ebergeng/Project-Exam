@@ -25,7 +25,6 @@ const VenueWrapper = styled.div`
 
 const VenuePage = () => {
   const venue = useVenueStore((state) => state.singleVenue);
-
   if (!venue.name) {
     return <div>Loading...</div>;
   }

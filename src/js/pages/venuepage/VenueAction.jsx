@@ -10,14 +10,18 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm, Controller } from "react-hook-form";
 import "./datePicker.css";
+import { FormButton } from "../../../styles/formStyles";
 
 const Wrapper = styled.div`
-  width: 30%;
-  height: 50vh;
+  width: 100%;
+  max-width: 250px;
+  height: fit-content;
   background-color: var(--color-primary);
   border-radius: 10px;
   box-shadow: var(--box-shadow);
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Facilities = styled.div`
@@ -44,6 +48,8 @@ const PriceWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 25px;
+  margin-bottom: 35px;
 
   div {
     font-size: 1.3rem;
@@ -59,10 +65,29 @@ const Price = styled.div`
   font-weight: bold;
 `;
 
-const CTA = styled.div`
+const CTA = styled.form`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 15px;
+  position: relative;
+  flex-direction: column;
+  .date-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .guests {
+    height: 35px;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+  }
+
+  p {
+    margin: 0px;
+  }
 `;
 
 const schima = yup
@@ -127,8 +152,9 @@ const VenueAction = ({ venue }) => {
         <PriceText>Price</PriceText>
         <Price>{venue.price}</Price>
       </PriceWrapper>
-      <CTA>
-        <form onSubmit={handleSubmit(onSubmit)}>
+      <CTA onSubmit={handleSubmit(onSubmit)}>
+        <p>{errors.dateFrom?.message || errors.dateTo?.message || " "}</p>
+        <div className="date-selector">
           <Controller
             control={control} // Dette kommer fra useForm()-hook.
             name="dateFrom"
@@ -145,6 +171,7 @@ const VenueAction = ({ venue }) => {
               />
             )}
           />
+
           <Controller
             control={control} // Dette kommer fra useForm()-hook.
             name="dateTo"
@@ -161,11 +188,23 @@ const VenueAction = ({ venue }) => {
               />
             )}
           />
-
-          <input type="number" {...register("guests")} />
-          <input type="submit" />
-        </form>
-        <p>{errors.dateFrom?.message || errors.dateTo?.message}</p>
+        </div>
+        <select
+          className="guests"
+          id="guests"
+          name="guests"
+          {...register("guests")}
+        >
+          <option value="" selected disabled hidden>
+            Select an option
+          </option>
+          {[...Array(venue.maxGuests)].map((_, i) => (
+            <option key={`guest${i}`} value={i + 1}>
+              {i + 1}
+            </option>
+          ))}
+        </select>
+        <FormButton type="submit" value="Book" />
       </CTA>
     </Wrapper>
   );
