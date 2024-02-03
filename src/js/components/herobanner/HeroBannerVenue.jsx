@@ -41,11 +41,12 @@ const HeroBannerVenue = ({ venueId }) => {
       } else {
         console.log("somthing wrong");
       }
+      console.log(venue);
     }
     fetchVenue();
 
     setSearchStateOff(); // sets searchModalState to false if its open
-  }, [addVenue]);
+  }, [venueId]);
 
   if (!venue.name) {
     return <div>Loading....</div>;

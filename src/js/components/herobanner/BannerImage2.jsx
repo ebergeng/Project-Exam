@@ -151,7 +151,7 @@ function BannerImages2({ venue }) {
           </Link>
         </Front>
         <Back style={{ backgroundImage: `url(${backVenue.media[0]})` }}>
-          <Link to={`/${backVenue.id}`} key={`${backVenue.id}`}>
+          <Link to={`venue/${backVenue.id}`} key={`${backVenue.id}`}>
             <Filter>
               <CardHeader>
                 {backVenue.name}
