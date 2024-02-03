@@ -46,7 +46,7 @@ const HeroBannerVenue = ({ venueId }) => {
     fetchVenue();
 
     setSearchStateOff(); // sets searchModalState to false if its open
-  }, [venueId]);
+  }, [addVenue, setSearchStateOff, venue, venueId]);
 
   if (!venue.name) {
     return <div>Loading....</div>;
