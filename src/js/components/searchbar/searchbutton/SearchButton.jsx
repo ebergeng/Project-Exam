@@ -7,7 +7,7 @@ const SearchBtn = styled.button`
   border-radius: 10px;
   background-color: var(--color-secondary);
   border: none;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow-dm);
   cursor: pointer;
 
   &:hover {

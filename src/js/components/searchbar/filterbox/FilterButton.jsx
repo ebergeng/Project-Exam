@@ -7,12 +7,14 @@ const BtnWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+
   cursor: pointer;
+  background-color: var(--color-searchbar-dm);
   background-color: ${({ isopen }) =>
-    isopen === "true" ? "#e7e7e7" : "white"};
+    isopen === "true" ? "#888888" : "#393939"};
 
   &:hover {
-    background-color: #e7e7e7;
+    background-color: #888888;
   }
 `;
 

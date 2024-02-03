@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import useSearchFilterStore from "../../../storage/useSearchFilterStore";
 import useVenueStore from "../../../storage/apiStore";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
@@ -11,11 +11,32 @@ const Wrapper = styled.div`
   max-width: 500px;
   max-height: 40vh;
   position: absolute;
-  background-color: #ffffff99;
+  background-color: var(--color-searchbar-result-bg-dm);
   top: 105px;
   border-radius: 10px;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow-dm);
   overflow: auto;
+  z-index: 999;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    padding: 2px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #8d8d8d;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #2b2b2b;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #222222;
+  }
 `;
 
 const Ul = styled.ul`
@@ -26,18 +47,19 @@ const Ul = styled.ul`
 
 const Li = styled.li`
   display: block;
-  color: var(--color-foreground);
+  color: var(--color-text-dm);
   font-size: 18px;
   padding: 10px;
   &:hover {
-    background-color: white;
+    background-color: var(--color-background);
   }
 `;
 
 const SearchResult = () => {
   const filter = useSearchFilterStore((state) => state.filter);
   const venues = useVenueStore((state) => state.venues);
-  const [filterdVenues, setFilterdVenues] = useState([]);
+  const addFilterStoreVenues = useVenueStore((state) => state.addFilterVenues);
+  const filterdVenues = useVenueStore((state) => state.filterdVenues);
 
   const search = () => {
     const filteredArray = venues.filter((venue) => {
@@ -73,19 +95,18 @@ const SearchResult = () => {
       (obj, index, self) => index === self.findIndex((t) => t.id === obj.id),
     );
 
-    console.log(uniqueArray);
     return uniqueArray;
   };
 
   useEffect(() => {
-    setFilterdVenues(search());
-    console.log("hey");
+    addFilterStoreVenues(search());
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
 
   return (
     <>
-      {filter.where.length > 0 && (
+      {filter.resultOpen && (
         <Wrapper>
           <Ul>
             {filterdVenues.map((venue) => {

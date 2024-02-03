@@ -4,14 +4,12 @@ import useVenueStore from "../storage/apiStore";
 import { getVenues } from "../api/venues/getVenues";
 import { useEffect } from "react";
 import SearchBar from "../components/searchbar/SearchBar";
+import VenueGroup from "../components/venues/VenueGroup";
 
 const HomePage = () => {
   GetImages();
   GetTopRated();
-
-  const venues = useVenueStore((state) => state.venues);
   const addVenues = useVenueStore((state) => state.addVenues);
-
   useEffect(() => {
     const limit = 100;
     let offset = 0;
@@ -34,7 +32,7 @@ const HomePage = () => {
   return (
     <>
       <SearchBar />
-      <button onClick={() => console.log(venues)}>see all venues</button>
+      <VenueGroup />
     </>
   );
 };

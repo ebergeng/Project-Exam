@@ -1,3 +1,5 @@
-.wifi-icon:hover {
-  fill: var(--color-primary);
+.wifi-icon {
+  position: relative;
+  top: 2px;
+  z-index: 0;
 }

@@ -3,8 +3,8 @@ import styled from "styled-components";
 const ToggleSwitchContainer = styled.label`
   position: relative;
   display: inline-block;
-  width: 30px;
-  height: 18px;
+  width: 40px;
+  height: 14px;
 `;
 
 const Slider = styled.span`
@@ -14,7 +14,8 @@ const Slider = styled.span`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--color-foreground);
+
+  background-color: #333333;
   -webkit-transition: 0.4s;
   transition: 0.4s;
   border-radius: 34px;
@@ -22,11 +23,11 @@ const Slider = styled.span`
   &:before {
     position: absolute;
     content: "";
-    height: 14px;
-    width: 14px;
-    left: 1px;
-    bottom: 2px;
-    background-color: #a8a8a8;
+    height: 12px;
+    width: 12px;
+    left: 5px;
+    bottom: 1px;
+    background-color: #dbdbdb;
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 50%;
@@ -46,8 +47,12 @@ const InputCheckbox = styled.input.attrs({ type: "checkbox" })`
   &:checked + ${Slider}:before {
     -webkit-transform: translateX(14px);
     -ms-transform: translateX(14px);
-    transform: translateX(14px);
-    background-color: var(--color-secondary);
+    transform: translateX(18px);
+    //background-color: var(--color-primary);
+  }
+
+  &:checked + ${Slider} {
+    background-color: var(--color-primary);
   }
 `;
 

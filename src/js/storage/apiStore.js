@@ -14,12 +14,15 @@ const useVenueStore = create((set) => ({
     breakfast: false,
   },
   filterdVenues: [],
+  searchFilterdVenues: [],
   addVenues: (newVenues) =>
     set((state) => ({ venues: [...state.venues, ...newVenues] })),
   setMediaUrls: (urls) => set({ mediaUrls: urls }),
   setTopRated: (venue) => set({ topRated: venue }),
   setFilter: (filter) => set({ filter: filter }),
   addFilterVenues: (filterdVenues) => set({ filterdVenues: filterdVenues }),
+  addSearchFilterdVenues: (filterdVenues) =>
+    set({ searchFilterdVenues: filterdVenues }),
   setDispayFilterdVenues: () =>
     set((state) => ({
       dispayFilterdVenues: state.filterdVenues.length > 0 ? true : false,

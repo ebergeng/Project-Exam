@@ -9,6 +9,7 @@ import CheckBoxWrapper from "./filterbox/CheckBoxWrapper";
 import GuestAmount from "./filterbox/GuestAmount";
 import SearchButton from "./searchbutton/SearchButton";
 import SearchResult from "./searchresult/SearchResult";
+import useVenueStore from "../../storage/apiStore";
 
 const Container = styled.div`
   width: 100%;
@@ -22,10 +23,10 @@ const Container = styled.div`
 
 const SearchForm = styled.form`
   height: 100px;
-  background-color: white;
+  background-color: var(--color-searchbar-dm);
   max-width: 500px;
   width: 100%;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow-dm);
   display: flex;
   border-radius: 10px;
   overflow: hidden;
@@ -57,7 +58,7 @@ const WrapperleftTop = styled.div`
     width: 100%;
     &:hover,
     &:focus {
-      background-color: #e7e7e7;
+      background-color: var(--color-searchbar-hover-dm);
     }
     &:focus::placeholder {
       color: transparent;
@@ -66,13 +67,31 @@ const WrapperleftTop = styled.div`
 `;
 
 const SearchBar = () => {
+  const searchFilterdVenues = useVenueStore(
+    (state) => state.searchFilterdVenues,
+  );
+  const filterdVenues = useVenueStore((state) => state.filterdVenues);
+  const setSearchFilter = useVenueStore(
+    (state) => state.addSearchFilterdVenues,
+  );
+  const setResultOpen = useSearchFilterStore((state) => state.setResultOpen);
   const filter = useSearchFilterStore((state) => state.filter);
 
-  useEffect(() => {}, [filter]);
+  function handleSubmit(e) {
+    e.preventDefault();
+    setSearchFilter(filterdVenues);
+    if (filter.resultOpen) {
+      setResultOpen(false);
+    }
+
+    console.log(filterdVenues);
+  }
+
+  useEffect(() => {}, [searchFilterdVenues]);
 
   return (
     <Container>
-      <SearchForm>
+      <SearchForm onSubmit={(e) => handleSubmit(e)}>
         <WrapperLeft>
           <WrapperleftTop>
             <DatePicker />
@@ -86,7 +105,7 @@ const SearchBar = () => {
         </WrapperLeft>
 
         <WrapperRight>
-          <SearchButton />
+          <SearchButton onSubmit={(e) => handleSubmit(e)} />
         </WrapperRight>
       </SearchForm>
       <SearchResult />

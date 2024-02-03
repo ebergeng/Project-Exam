@@ -11,7 +11,8 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   max-width: 150px;
-  background-color: #ffffff88;
+  background-color: var(--color-filterbox-dm);
+  color: var(--color-text-dm);
   border-radius: 10px;
   padding: 5px;
 
@@ -44,7 +45,7 @@ const GuestAmount = () => {
           <PlussIcon />
         </div>
       </Operator>
-      <GuestIcon />
+      <GuestIcon color={["#E87B7B", "#52A49A"]} />
     </Container>
   );
 };

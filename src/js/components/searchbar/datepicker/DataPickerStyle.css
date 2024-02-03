@@ -4,11 +4,17 @@
   border: none;
   outline: none;
   width: 100%;
+  background-color: var(--color-searchbar-dm);
 }
 
 .datePicker:hover,
 .datePicker:focus {
-  background-color: #e7e7e7;
+  background-color: var(--color-searchbar-dm);
+  cursor: pointer;
+}
+
+.datePicker::placeholder {
+  color: var(--color-text-toned-dm);
 }
 
 .datePicker:focus::placeholder {

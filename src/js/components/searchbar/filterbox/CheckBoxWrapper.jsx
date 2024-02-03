@@ -21,7 +21,7 @@ const Wrapper = styled.div`
 const Label = styled.label`
   font-size: 12px;
   font-weight: 600;
-  color: var(--color-forground);
+  color: var(--color-text-dm);
   cursor: pointer;
 `;
 
@@ -38,7 +38,7 @@ const CheckBoxWrapper = () => {
       />
       <Label htmlFor="wifi">
         <WifiIcon
-          color={filter.wifi ? "#003366" : "#8d8d8d"}
+          color={filter.wifi ? "#52A49A" : "#8d8d8d"}
           width={"20"}
           height={"20"}
         />
@@ -55,7 +55,7 @@ const CheckBoxWrapper = () => {
       />
       <Label htmlFor="parking">
         <ParkingIcon
-          color={filter.parking ? "#003366" : "#8d8d8d"}
+          color={filter.parking ? "#52A49A" : "#8d8d8d"}
           width={"20"}
           height={"20"}
         />
@@ -72,7 +72,7 @@ const CheckBoxWrapper = () => {
       />
       <Label htmlFor="breakfast">
         <BreakfastIcon
-          color={filter.breakfast ? "#003366" : "#8d8d8d"}
+          color={filter.breakfast ? "#52A49A" : "#8d8d8d"}
           width={"20"}
           height={"20"}
         />
@@ -89,7 +89,7 @@ const CheckBoxWrapper = () => {
       />
       <Label htmlFor="pets">
         <PetsIcon
-          color={filter.pets ? "#003366" : "#8d8d8d"}
+          color={filter.pets ? "#52A49A" : "#8d8d8d"}
           width={"20"}
           height={"20"}
         />

@@ -131,6 +131,7 @@ const VenueAction = ({ venue }) => {
         return <PetsIcon color={"white"} width={"30"} height={"30"} />;
     }
   };
+
   return (
     <Wrapper>
       <Facilities>

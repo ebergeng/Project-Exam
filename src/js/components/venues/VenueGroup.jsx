@@ -1,63 +1,82 @@
 import styled from "styled-components";
-import Venue from "./Venue";
+import Venue from "./VenueCard";
 import useVenueStore from "../../storage/apiStore";
 import { useState } from "react";
-
-const Container = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 10px;
-  align-items: center;
-  height: 100%;
-`;
 
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1400px;
-  height: 100%;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 10px;
 `;
 
 const MoreButton = styled.button`
   margin: 5px;
-  width: 120px;
+  width: 100%;
+  max-width: 1230px;
+  color: var(--color-text-dm);
   background-color: var(--color-background);
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow-dm);
   border: none;
   height: 28px;
   border-radius: 5px;
   &:hover {
-    background-color: var(--color-background-hover);
+    background-color: var(--color-background-hover-dm);
     cursor: pointer;
+  }
+`;
+
+const Container = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const VenueGroupHeader = styled.div`
+  height: 11vh;
+  min-height: 120px;
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  align-items: end;
+  padding: 10px;
+
+  .filter {
+    color: var(--color-accent);
+    font-size: 18px;
+    font-weight: bold;
   }
 `;
 
 const VenueGroup = () => {
   //const { data, isLoading, isError } = useApi(GET_VENUES_URL)
-  const topRated = useVenueStore((state) => state.topRated);
-  const [slice, setSlice] = useState(3);
+  const venues = useVenueStore((state) => state.venues);
+  const filterdVenues = useVenueStore((state) => state.searchFilterdVenues);
+  const [slice, setSlice] = useState(16);
 
   function addColumn() {
-    setSlice(slice + 5);
+    setSlice(slice + 28);
   }
 
   return (
     <Container>
-      <h2>Top Rated</h2>
-
+      <VenueGroupHeader>
+        <div className="filter">Filter: </div>
+      </VenueGroupHeader>
       <Wrapper>
-        {topRated.length > 1
-          ? topRated
+        {filterdVenues.length > 0
+          ? filterdVenues
               .map((venue) => <Venue key={venue.id} venue={venue} />)
               .slice(slice - slice, slice)
-          : null}
+          : venues
+              .map((venue) => <Venue key={venue.id} venue={venue} />)
+              .slice(slice - slice, slice)}
+        <MoreButton onClick={addColumn}>See More</MoreButton>
       </Wrapper>
-      <MoreButton onClick={addColumn}>See More</MoreButton>
     </Container>
   );
 };

@@ -12,10 +12,15 @@ const useSearchFilterStore = create((set) => ({
     breakfast: false,
     pets: false,
     filterIsOpen: false,
+    resultOpen: false,
   },
   setOpenFilter: () =>
     set((state) => ({
       filter: { ...state.filter, filterIsOpen: !state.filter.filterIsOpen },
+    })),
+  setResultOpen: () =>
+    set((state) => ({
+      filter: { ...state.filter, resultOpen: !state.filter.resultOpen },
     })),
   setDateFrom: (date) =>
     set((state) => ({
