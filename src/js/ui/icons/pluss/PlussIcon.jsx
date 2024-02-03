@@ -1,3 +1,5 @@
+import "./PlussIcon.css";
+
 const PlussIcon = () => {
   return (
     <svg
