@@ -1,4 +1,4 @@
-import "./PlussIcon.css";
+import "./plussI.css";
 
 const PlussIcon = () => {
   return (
