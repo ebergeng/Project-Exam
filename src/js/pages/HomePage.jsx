@@ -1,5 +1,3 @@
-import GetImages from "../api/getImages";
-import GetTopRated from "../api/topRated";
 import useVenueStore from "../storage/apiStore";
 import { getVenues } from "../api/venues/getVenues";
 import { useEffect } from "react";
@@ -7,8 +5,6 @@ import SearchBar from "../components/searchbar/SearchBar";
 import VenueGroup from "../components/venues/VenueGroup";
 
 const HomePage = () => {
-  GetImages();
-  GetTopRated();
   const addVenues = useVenueStore((state) => state.addVenues);
   useEffect(() => {
     const limit = 100;

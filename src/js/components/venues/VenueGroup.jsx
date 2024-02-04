@@ -59,7 +59,7 @@ const VenueGroup = () => {
   const [slice, setSlice] = useState(16);
 
   function addColumn() {
-    setSlice(slice + 28);
+    setSlice(slice + 16);
   }
 
   return (

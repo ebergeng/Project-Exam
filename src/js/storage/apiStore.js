@@ -4,7 +4,6 @@ import { create } from "zustand";
 const useVenueStore = create((set) => ({
   dispayFilterdVenues: false,
   mediaUrls: [],
-  topRated: [],
   venues: [],
   singleVenue: [],
   filter: {
@@ -18,7 +17,6 @@ const useVenueStore = create((set) => ({
   addVenues: (newVenues) =>
     set((state) => ({ venues: [...state.venues, ...newVenues] })),
   setMediaUrls: (urls) => set({ mediaUrls: urls }),
-  setTopRated: (venue) => set({ topRated: venue }),
   setFilter: (filter) => set({ filter: filter }),
   addFilterVenues: (filterdVenues) => set({ filterdVenues: filterdVenues }),
   addSearchFilterdVenues: (filterdVenues) =>
