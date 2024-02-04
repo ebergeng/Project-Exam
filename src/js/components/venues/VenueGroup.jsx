@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Venue from "./VenueCard";
 import useVenueStore from "../../storage/apiStore";
 import { useState } from "react";
+import useSearchFilterStore from "../../storage/useSearchFilterStore";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -49,6 +50,14 @@ const VenueGroupHeader = styled.div`
     color: var(--color-accent);
     font-size: 18px;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+      color: var(--color-secondary);
+      font-size: 14px;
+      margin-left: 10px;
+    }
   }
 `;
 
@@ -56,16 +65,22 @@ const VenueGroup = () => {
   //const { data, isLoading, isError } = useApi(GET_VENUES_URL)
   const venues = useVenueStore((state) => state.venues);
   const filterdVenues = useVenueStore((state) => state.searchFilterdVenues);
+  const filterText = useSearchFilterStore((state) => state.filter.filterText);
   const [slice, setSlice] = useState(16);
 
   function addColumn() {
     setSlice(slice + 16);
   }
 
+  console.log(filterText.length);
   return (
     <Container>
       <VenueGroupHeader>
-        <div className="filter">Filter: </div>
+        {filterText ? (
+          <div className="filter">
+            Filter: <p>{filterText ? filterText : null}</p>
+          </div>
+        ) : null}
       </VenueGroupHeader>
       <Wrapper>
         {filterdVenues.length > 0

@@ -76,10 +76,12 @@ const SearchBar = () => {
   );
   const setResultOpen = useSearchFilterStore((state) => state.setResultOpen);
   const filter = useSearchFilterStore((state) => state.filter);
+  const setFilterText = useSearchFilterStore((state) => state.setFilterText);
 
   function handleSubmit(e) {
     e.preventDefault();
     setSearchFilter(filterdVenues);
+    setFilterText();
     if (filter.resultOpen) {
       setResultOpen(false);
     }

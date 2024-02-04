@@ -13,7 +13,25 @@ const useSearchFilterStore = create((set) => ({
     pets: false,
     filterIsOpen: false,
     resultOpen: false,
+    filterText: "",
   },
+  setFilterText: () =>
+    set((state) => ({
+      filter: {
+        ...state.filter,
+        filterText: [
+          state.filter.wifi ? "wifi, " : null,
+          state.filter.parking ? "parking, " : null,
+          state.filter.pets ? "pets, " : null,
+          state.filter.breakfast ? "breakfast, " : null,
+          state.filter.guests > 1
+            ? `Min guest: ${state.filter.guests}, `
+            : null,
+          state.filter.where ? state.filter.where : null,
+        ],
+      },
+    })),
+
   setOpenFilter: () =>
     set((state) => ({
       filter: { ...state.filter, filterIsOpen: !state.filter.filterIsOpen },
