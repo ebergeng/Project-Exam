@@ -72,7 +72,6 @@ const VenueGroup = () => {
     setSlice(slice + 16);
   }
 
-  console.log(filterText.length);
   return (
     <Container>
       <VenueGroupHeader>
