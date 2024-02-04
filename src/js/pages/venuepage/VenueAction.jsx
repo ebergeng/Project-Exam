@@ -11,17 +11,22 @@ import * as yup from "yup";
 import { useForm, Controller } from "react-hook-form";
 import "./datePicker.css";
 import { FormButton } from "../../../styles/formStyles";
+import RatingStar from "../../../assets/icons/star.png";
 
 const Wrapper = styled.div`
   width: 100%;
   max-width: 250px;
-  height: fit-content;
+  height: 100%;
   background-color: var(--color-primary);
   border-radius: 10px;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow-dm);
   padding: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  @media (max-width: 600px) {
+    max-width: unset;
+  }
 `;
 
 const Facilities = styled.div`
@@ -90,6 +95,26 @@ const CTA = styled.form`
   }
 `;
 
+const Rating = styled.div`
+  color: var(--color-text-dm);
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+`;
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+
+  h2 {
+    margin: 0;
+  }
+`;
+
 const schima = yup
   .object({
     dateFrom: yup.string().required("Select a date from"),
@@ -135,7 +160,14 @@ const VenueAction = ({ venue }) => {
   return (
     <Wrapper>
       <Facilities>
-        <h2>Facilities</h2>
+        <Header>
+          <h2>Facilities</h2>
+          <Rating>
+            <img src={RatingStar} alt="star to indikate rating" height="20" />{" "}
+            {venue.rating}/5
+          </Rating>
+        </Header>
+
         <ul>
           {meta.map((item) => (
             <li key={item}>
@@ -197,7 +229,7 @@ const VenueAction = ({ venue }) => {
           {...register("guests")}
         >
           <option value="" selected disabled hidden>
-            Select an option
+            Guests
           </option>
           {[...Array(venue.maxGuests)].map((_, i) => (
             <option key={`guest${i}`} value={i + 1}>
@@ -205,7 +237,11 @@ const VenueAction = ({ venue }) => {
             </option>
           ))}
         </select>
-        <FormButton type="submit" value="Book" />
+        {!localStorage.getItem("accessToken") ? (
+          <FormButton type="submit" value="Book" />
+        ) : (
+          "Please log in"
+        )}
       </CTA>
     </Wrapper>
   );

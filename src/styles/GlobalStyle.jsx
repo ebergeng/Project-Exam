@@ -42,13 +42,12 @@ const GlobalStyle = createGlobalStyle`
 
     body{
         margin: 0;
-        height: 100vh;
+        min-height: 100vh;
         background-color: var(--color-background-dm);
     }
     
     main {
         position: relative;
-        height: 200vh;
     }
 `;
 
