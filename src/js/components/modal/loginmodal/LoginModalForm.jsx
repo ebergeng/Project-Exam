@@ -6,6 +6,7 @@ import { loginUser } from "../../../api/auth/loginUser";
 import { useState } from "react";
 import Loader from "../../common/Loader";
 import useModalStateStore from "../../../storage/modalstate/useModalState";
+import useProfileStore from "../../../storage/profileStore";
 
 const schima = yup
   .object({
@@ -26,6 +27,7 @@ const LogInModalForm = () => {
   const modalStateLogin = useModalStateStore(
     (state) => state.setModalStateLogin,
   );
+  const setProfileStore = useProfileStore((state) => state.setProfile);
 
   const {
     register,
@@ -43,6 +45,13 @@ const LogInModalForm = () => {
       console.log("hey");
     } else {
       modalStateLogin(false);
+      setProfileStore({
+        name: response.name,
+        email: response.email,
+        avatar: response.avatar,
+        accessToken: response.accessToken,
+        venueManager: response.venueManager,
+      });
     }
 
     setIsLoading(false);

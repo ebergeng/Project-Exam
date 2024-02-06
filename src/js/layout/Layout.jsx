@@ -6,10 +6,12 @@ import HeroBannerVenue from "../components/herobanner/HeroBannerVenue";
 import SearchCall from "../components/common/SearchCall";
 import HomeCall from "../components/common/HomeCall";
 import { useEffect, useState } from "react";
+import useProfileStore from "../storage/profileStore";
 
 const Layout = ({ children }) => {
   const location = useLocation();
   const [showCalls, setShowCalls] = useState(false);
+  const isVenueManger = useProfileStore((state) => state.profile.venueManger);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,7 +55,10 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header />
-      <HeroBanner2>{contentForHeroBanner()}</HeroBanner2>
+      {!isVenueManger && location.pathname !== "/profile" ? (
+        <HeroBanner2>{contentForHeroBanner()}</HeroBanner2>
+      ) : null}
+
       <main>{children}</main>
       {location.pathname === "/" && showCalls ? (
         <>
