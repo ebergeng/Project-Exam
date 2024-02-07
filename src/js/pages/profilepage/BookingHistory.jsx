@@ -1,5 +1,11 @@
+import DropBox from "./DropBox";
+
 const BookingHistory = () => {
-  return <h1>Booking history</h1>;
+  return (
+    <DropBox contentName={"Booking History"}>
+      <h1>oter</h1>
+    </DropBox>
+  );
 };
 
 export default BookingHistory;

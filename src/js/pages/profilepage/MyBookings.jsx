@@ -1,5 +1,11 @@
+import DropBox from "./DropBox";
+
 const MyBookings = () => {
-  return <h1>My Bookings</h1>;
+  return (
+    <DropBox contentName={"Uppcomming Bookings"}>
+      <h1>pelle</h1>
+    </DropBox>
+  );
 };
 
 export default MyBookings;

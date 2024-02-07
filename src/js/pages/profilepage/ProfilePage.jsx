@@ -9,7 +9,9 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 2fr 5fr;
 `;
-const ProfileWrapper = styled.div``;
+const ProfileWrapper = styled.div`
+  max-height: 250px;
+`;
 
 const BookingWrapper = styled.div``;
 

@@ -6,22 +6,19 @@ import HeroBannerVenue from "../components/herobanner/HeroBannerVenue";
 import SearchCall from "../components/common/SearchCall";
 import HomeCall from "../components/common/HomeCall";
 import { useEffect, useState } from "react";
-import useProfileStore from "../storage/profileStore";
+import HeroBannerProfile from "../components/herobanner/HerobannerProfile";
 
 const Layout = ({ children }) => {
   const location = useLocation();
   const [showCalls, setShowCalls] = useState(false);
-  const isVenueManger = useProfileStore((state) => state.profile.venueManger);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Konverter 30vh til piksler.
-      // Du kan justere dette basert på nøyaktig hvor langt ned du vil at brukeren skal skrolle før komponentene vises.
       const vh = Math.max(
         document.documentElement.clientHeight || 0,
         window.innerHeight || 0,
       );
-      const threshold = vh * 0.3; // 30% av viewport-høyden
+      const threshold = vh * 0.3;
 
       if (window.scrollY > threshold) {
         setShowCalls(true);
@@ -30,18 +27,17 @@ const Layout = ({ children }) => {
       }
     };
 
-    // Legg til scroll event listener
     window.addEventListener("scroll", handleScroll);
-
-    // Fjern event listener når komponenten unmounts for å forhindre memory leaks
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []); // Tom dependency array betyr at effekten kun kjører når komponenten mounts
+  }, []);
 
   const contentForHeroBanner = () => {
-    if (location.pathname === "/") {
-      return <HeroBannerHome />;
+    switch (location.pathname) {
+      case "/":
+        return <HeroBannerHome />;
+      case "/profile":
+        return <HeroBannerProfile />;
     }
-
     const match = matchPath({ path: "/venue/:id" }, location.pathname);
 
     if (match) {
@@ -55,10 +51,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header />
-      {!isVenueManger && location.pathname !== "/profile" ? (
-        <HeroBanner2>{contentForHeroBanner()}</HeroBanner2>
-      ) : null}
-
+      <HeroBanner2>{contentForHeroBanner()}</HeroBanner2>
       <main>{children}</main>
       {location.pathname === "/" && showCalls ? (
         <>
