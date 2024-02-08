@@ -11,8 +11,9 @@ const Wrapper = styled.div`
   box-shadow: var(--box-shadow-dm);
   padding: 20px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: space-between;
+
   @media (max-width: 600px) {
     max-width: unset;
   }
@@ -22,6 +23,7 @@ const ImageContainer = styled.div`
   width: 100%;
   border-radius: 10px;
   overflow: hidden;
+  max-width: 200px;
   img {
     width: 100%;
     height: 100%;

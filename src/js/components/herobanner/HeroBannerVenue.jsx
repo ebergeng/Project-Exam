@@ -4,14 +4,16 @@ import { GetVenue } from "../../api/venues/GetVenue";
 import styled from "styled-components";
 import useSearchModalStore from "../../storage/modalstate/searchModalstate";
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  margin: 25px;
+`;
 
 const NameHead = styled.div`
   margin-bottom: 10px;
   h1 {
     text-align: center;
     color: white;
-    margin-bottom: 0;
+    margin: 0;
     font-size: 2rem;
   }
 `;

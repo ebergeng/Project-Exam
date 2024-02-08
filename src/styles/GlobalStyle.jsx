@@ -15,7 +15,8 @@ const GlobalStyle = createGlobalStyle`
         --btn-hover: #4d968d;
 
 
-        --color-background-dm: #2A2A2A; 
+        --color-background-dm: #333333; 
+        --color-secondary-background-dm: #464646; 
         --color-foreground-dm: #F4F4F4; 
         --color-text-toned-dm: #C1C1C1;
         --color-text-dm:#F4F4F4;

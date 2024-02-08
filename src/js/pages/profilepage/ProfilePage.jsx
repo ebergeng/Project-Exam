@@ -7,8 +7,15 @@ const Container = styled.div`
   width: 100%;
   padding: 20px;
   display: grid;
-  grid-template-columns: 2fr 5fr;
+  grid-template-columns: auto 1fr;
+  gap: 25px;
+
+  @media (max-width: 600px) {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+  }
 `;
+
 const ProfileWrapper = styled.div`
   max-height: 250px;
 `;

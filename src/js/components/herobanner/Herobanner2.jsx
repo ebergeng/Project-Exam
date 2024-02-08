@@ -4,8 +4,6 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   height: fit-content;
-  padding-top: 15px;
-  padding-bottom: 55px;
   box-shadow: 0px 2px 4px #080808b7;
 
   background: linear-gradient(

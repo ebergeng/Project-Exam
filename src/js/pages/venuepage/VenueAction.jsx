@@ -12,6 +12,8 @@ import { useForm, Controller } from "react-hook-form";
 import "./datePicker.css";
 import { FormButton } from "../../../styles/formStyles";
 import RatingStar from "../../../assets/icons/star.png";
+import { BookVenue } from "../../api/venues/BookVenue";
+import useProfileStore from "../../storage/profileStore";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -115,19 +117,20 @@ const Header = styled.div`
   }
 `;
 
-const schima = yup
+const schema = yup
   .object({
-    dateFrom: yup.string().required("Select a date from"),
-    dateTo: yup.string().required("Select a date to"),
+    dateFrom: yup.string().nullable().required("Select a date from"),
+    dateTo: yup.string().nullable().required("Select a date to"),
     guests: yup
       .number()
-      .required("How many are staying? ")
+      .required("How many are staying?")
       .min(1, "How many are staying?"),
   })
   .required();
 
 const VenueAction = ({ venue }) => {
   const meta = Object.keys(venue.meta).filter((key) => venue.meta[key]);
+  const token = useProfileStore((state) => state.profile.accessToken);
 
   const {
     control,
@@ -135,11 +138,14 @@ const VenueAction = ({ venue }) => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schima),
+    resolver: yupResolver(schema),
   });
 
   async function onSubmit(data) {
-    console.log(data);
+    data.venueId = venue.id;
+    const send = await BookVenue(data, token);
+    console.log(send);
+
     //setIsLoading(true);
     //setIsLoading(false);
   }
@@ -195,12 +201,15 @@ const VenueAction = ({ venue }) => {
               <ReactDatePicker
                 className="Date-picker"
                 placeholderText="From"
-                onChange={(date) => field.onChange(date)}
-                selected={field.value}
+                onChange={(date) =>
+                  field.onChange(date ? date.toISOString() : null)
+                }
+                selected={field.value ? new Date(field.value) : null}
                 isClearable
                 minDate={new Date()}
                 showDisabledMonthNavigation
                 id="dateFrom"
+                dateFormat="yyyy-MM-dd"
               />
             )}
           />
@@ -212,12 +221,15 @@ const VenueAction = ({ venue }) => {
               <ReactDatePicker
                 className="Date-picker"
                 placeholderText="To"
-                onChange={(date) => field.onChange(date)}
-                selected={field.value}
+                onChange={(date) =>
+                  field.onChange(date ? date.toISOString() : null)
+                }
+                selected={field.value ? new Date(field.value) : null}
                 isClearable
                 minDate={new Date()}
                 showDisabledMonthNavigation
                 id="dateTo"
+                dateFormat="yyyy-MM-dd"
               />
             )}
           />

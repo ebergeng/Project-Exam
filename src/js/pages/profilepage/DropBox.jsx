@@ -2,14 +2,13 @@ import styled from "styled-components";
 import { useState, useRef, useEffect } from "react";
 
 const Container = styled.div`
-  background: var(--color-background);
-  margin: 20px;
+  background: var(--color-secondary-background-dm);
   position: relative;
   height: ${(props) => props.height};
   transition: height 0.2s ease-in-out;
   border-bottom: 2px solid var(--color-text-dm);
-  box-shadow: var(--box-shadow-dm);
-  overflow-y: hidden;
+  overflow: hidden;
+  z-index: 0;
 `;
 
 const Button = styled.button`
@@ -20,7 +19,7 @@ const Button = styled.button`
   justify-content: space-between;
   padding: 10px;
   align-items: center;
-  color: var(--color-accent);
+  color: ${(props) => props.color};
   font-size: 20px;
   border: none;
   cursor: pointer;
@@ -29,7 +28,9 @@ const Button = styled.button`
   }
 `;
 
-const DropBox = ({ contentName, children }) => {
+const Span = styled.span``;
+
+const DropBox = ({ contentName, children, color }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [height, setHeight] = useState("25px");
   const contentRef = useRef(null);
@@ -44,8 +45,8 @@ const DropBox = ({ contentName, children }) => {
 
   return (
     <Container ref={contentRef} height={height}>
-      <Button onClick={toggleMenu}>
-        {contentName} {isOpen ? <spna>▲</spna> : <spna>▼</spna>}
+      <Button onClick={toggleMenu} color={color}>
+        {contentName} {isOpen ? <Span>▲</Span> : <Span>▼</Span>}
       </Button>
       {children}
     </Container>

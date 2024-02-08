@@ -6,6 +6,8 @@ const ImageContainer = styled.div`
   width: 200px;
   height: 200px;
   perspective: 1000px;
+  margin-top: 25px;
+  margin-bottom: 55px;
   @media (max-width: 800px) {
     width: 180px;
     height: 180px;
