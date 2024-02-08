@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import DropBox from "./DropBox";
-import { GetBookings } from "../../api/venues/GetBookings";
-import useProfileStore from "../../storage/profileStore";
+import { getBookings } from "../../../api/venues/getBookings";
+import useProfileStore from "../../../storage/profileStore";
 import BookedVenue from "./BookedVenue";
 import styled from "styled-components";
 
@@ -13,29 +13,29 @@ const Ul = styled.ul`
   padding: 15px 0px;
 `;
 
-const BookingHistory = () => {
+const MyBookings = () => {
   const [bookings, setBookings] = useState([]);
   const name = useProfileStore((state) => state.profile.name);
   const token = useProfileStore((state) => state.profile.accessToken);
 
   useEffect(() => {
-    async function getBookings() {
-      const data = await GetBookings(name, token);
+    async function handleBookings() {
+      const data = await getBookings(name, token);
       if (data) {
         const filterdBookings = data.filter((b) => {
           const bookingDate = new Date(b.dateFrom);
           const today = new Date();
           today.setHours(0, 0, 0, 0);
-          return bookingDate <= today;
+          return bookingDate > today;
         });
         setBookings(filterdBookings);
       }
     }
-    getBookings();
+    handleBookings();
   }, []);
 
   return (
-    <DropBox contentName={"Booking History"} color={"#E87B7B"}>
+    <DropBox contentName={"My Bookings"} color={"#52A49A"}>
       <Ul>
         {bookings.map((booking, index) => (
           <Li key={booking.venue.id + index}>
@@ -47,4 +47,4 @@ const BookingHistory = () => {
   );
 };
 
-export default BookingHistory;
+export default MyBookings;

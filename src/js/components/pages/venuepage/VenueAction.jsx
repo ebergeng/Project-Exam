@@ -1,19 +1,19 @@
 import styled from "styled-components";
-import WifiIcon from "../../ui/icons/wifi/WifiIcon";
-import ParkingIcon from "../../ui/icons/parking/ParkingIcon";
-import BreakfastIcon from "../../ui/icons/breakfast/BreakfastIcon";
-import PetsIcon from "../../ui/icons/pets/PetsIcon";
-import GuestIcon from "../../ui/icons/Guests/GuestIcon";
+import WifiIcon from "../../../ui/icons/wifi/WifiIcon";
+import ParkingIcon from "../../../ui/icons/parking/ParkingIcon";
+import BreakfastIcon from "../../../ui/icons/breakfast/BreakfastIcon";
+import PetsIcon from "../../../ui/icons/pets/PetsIcon";
+import GuestIcon from "../../../ui/icons/Guests/GuestIcon";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm, Controller } from "react-hook-form";
 import "./datePicker.css";
-import { FormButton } from "../../../styles/formStyles";
-import RatingStar from "../../../assets/icons/star.png";
-import { BookVenue } from "../../api/venues/BookVenue";
-import useProfileStore from "../../storage/profileStore";
+import { FormButton } from "../../../../styles/formStyles";
+import RatingStar from "../../../../assets/icons/star.png";
+import { bookVenue } from "../../../api/venues/bookVenue";
+import useProfileStore from "../../../storage/profileStore";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -143,7 +143,7 @@ const VenueAction = ({ venue }) => {
 
   async function onSubmit(data) {
     data.venueId = venue.id;
-    const send = await BookVenue(data, token);
+    const send = await bookVenue(data, token);
     console.log(send);
 
     //setIsLoading(true);

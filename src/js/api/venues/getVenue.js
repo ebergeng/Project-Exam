@@ -1,6 +1,6 @@
 import { GET_VENUES_URL } from "../constants.js";
 
-export async function GetVenue(venuId) {
+export async function getVenue(venuId) {
   try {
     const response = await fetch(`${GET_VENUES_URL}/${venuId}`);
     if (!response.ok) {

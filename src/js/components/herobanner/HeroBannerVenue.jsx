@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import useVenueStore from "../../storage/apiStore";
-import { GetVenue } from "../../api/venues/GetVenue";
+import { getVenue } from "../../api/venues/getVenue";
 import styled from "styled-components";
 import useSearchModalStore from "../../storage/modalstate/searchModalstate";
 
@@ -37,13 +37,12 @@ const HeroBannerVenue = ({ venueId }) => {
 
   useEffect(() => {
     async function fetchVenue() {
-      const data = await GetVenue(venueId);
+      const data = await getVenue(venueId);
       if (data) {
         addVenue(data);
       } else {
         console.log("somthing wrong");
       }
-      console.log(venue);
     }
     fetchVenue();
 

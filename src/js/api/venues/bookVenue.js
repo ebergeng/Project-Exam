@@ -1,6 +1,6 @@
 import { BOOK_VENUE_URL } from "../constants.js";
 
-export async function BookVenue(booking, token) {
+export async function bookVenue(booking, token) {
   const options = {
     headers: {
       "Content-Type": "application/json",

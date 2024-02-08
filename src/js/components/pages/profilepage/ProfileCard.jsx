@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import useProfileStore from "../../storage/profileStore";
-import testImg from "../../../assets/images/image2.jpeg";
+import useProfileStore from "../../../storage/profileStore";
+import testImg from "../../../../assets/images/image2.jpeg";
 
 const Wrapper = styled.div`
   width: 100%;

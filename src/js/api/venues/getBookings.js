@@ -1,6 +1,6 @@
 import { PROFILE_URL } from "../constants.js";
 
-export async function GetBookings(userName, token) {
+export async function getBookings(userName, token) {
   const url = `${PROFILE_URL}/${userName}/bookings?_venue=true`;
   const options = {
     headers: {

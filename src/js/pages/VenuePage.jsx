@@ -1,7 +1,7 @@
-import useVenueStore from "../../storage/apiStore";
+import useVenueStore from "../storage/apiStore";
 import styled from "styled-components";
-import VenueAction from "./VenueAction";
-import VenueImage from "./VenueImage";
+import VenueAction from "../components/pages/venuepage/VenueAction";
+import VenueImage from "../components/pages/venuepage/VenueImage";
 
 const Container = styled.div`
   width: 100%;

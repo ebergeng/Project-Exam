@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import ProfileCard from "./ProfileCard";
-import MyBookings from "./MyBookings";
-import BookingHistory from "./BookingHistory";
+import ProfileCard from "../components/pages/profilepage/ProfileCard";
+import MyBookings from "../components/pages/profilepage/MyBookings";
+import BookingHistory from "../components/pages/profilepage/BookingHistory";
 
 const Container = styled.div`
   width: 100%;
