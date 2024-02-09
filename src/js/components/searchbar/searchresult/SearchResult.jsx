@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   max-width: 500px;
   max-height: 40vh;
   position: absolute;
-  background-color: var(--color-searchbar-result-bg-dm);
+  background-color: var(--color-searchbar-result-bg);
   top: 105px;
   border-radius: 10px;
   box-shadow: var(--box-shadow-dm);
@@ -47,7 +47,7 @@ const Ul = styled.ul`
 
 const Li = styled.li`
   display: block;
-  color: var(--color-text-dm);
+  color: var(--color-text);
   font-size: 18px;
   padding: 10px;
   &:hover {

@@ -12,7 +12,7 @@ const FilterContainer = styled.div`
   max-width: 500px;
   display: ${({ isopen }) => (isopen === "true" ? "grid" : "none")};
   grid-template-columns: 2fr 1fr;
-  background-color: var(--color-filterbox-dm);
+  background-color: var(--color-filterbox);
   box-shadow: var(--box-shadow);
   border-radius: 10px;
   justify-content: space-between;

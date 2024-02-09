@@ -23,7 +23,7 @@ const Container = styled.div`
 
 const SearchForm = styled.form`
   height: 100px;
-  background-color: var(--color-searchbar-dm);
+  background-color: var(--color-searchbar);
   max-width: 500px;
   width: 100%;
   box-shadow: var(--box-shadow-dm);
@@ -58,7 +58,7 @@ const WrapperleftTop = styled.div`
     width: 100%;
     &:hover,
     &:focus {
-      background-color: var(--color-searchbar-hover-dm);
+      background-color: var(--color-searchbar-hover);
     }
     &:focus::placeholder {
       color: transparent;

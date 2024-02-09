@@ -9,12 +9,14 @@ const BtnWrapper = styled.div`
   justify-content: center;
 
   cursor: pointer;
-  background-color: var(--color-searchbar-dm);
+  background-color: var(--color-searchbar);
   background-color: ${({ isopen }) =>
-    isopen === "true" ? "#888888" : "#393939"};
+    isopen === "true"
+      ? "var(--color-searchbar-hover)"
+      : "var(--color-searchbar)"};
 
   &:hover {
-    background-color: #888888;
+    background-color: var(--color-searchbar-hover);
   }
 `;
 

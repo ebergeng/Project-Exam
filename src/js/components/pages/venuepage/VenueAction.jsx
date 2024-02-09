@@ -98,7 +98,7 @@ const CTA = styled.form`
 `;
 
 const Rating = styled.div`
-  color: var(--color-text-dm);
+  color: var(--color-text);
   font-size: 18px;
   display: flex;
   justify-content: center;

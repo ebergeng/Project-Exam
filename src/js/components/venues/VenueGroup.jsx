@@ -17,7 +17,7 @@ const MoreButton = styled.button`
   margin: 5px;
   width: 100%;
   max-width: 1230px;
-  color: var(--color-text-dm);
+  color: var(--color-text);
   background-color: var(--color-background);
   box-shadow: var(--box-shadow-dm);
   border: none;

@@ -21,7 +21,7 @@ const Wrapper = styled.div`
 const Label = styled.label`
   font-size: 12px;
   font-weight: 600;
-  color: var(--color-text-dm);
+  color: var(--color-text);
   cursor: pointer;
 `;
 

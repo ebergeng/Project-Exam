@@ -11,13 +11,13 @@ const Container = styled.div`
   max-width: 300px;
   height: 320px;
   border-radius: 10px;
-  background-color: var(--color-background);
+  background-color: var(--color-background-venue);
   box-shadow: var(--box-shadow-dm);
   overflow: hidden;
 
   &:hover {
     box-shadow: var(--box-shadow-hover-dm);
-    background-color: var(--color-background-hover-dm);
+    background-color: var(--color-background-hover-venue);
   }
 `;
 
@@ -49,7 +49,7 @@ const InfoTop = styled.div`
   p {
     margin: 6px;
     text-decoration: none;
-    color: var(--color-text-dm);
+    color: var(--color-text-venue);
     display: block;
   }
   div {
@@ -97,13 +97,13 @@ const Venue = ({ venue }) => {
   const getIcon = (name) => {
     switch (name) {
       case "wifi":
-        return <WifiIcon color={"white"} width={"20"} height={"20"} />;
+        return <WifiIcon color={"#003366"} width={"20"} height={"20"} />;
       case "parking":
-        return <ParkingIcon color={"white"} width={"20"} height={"20"} />;
+        return <ParkingIcon color={"#003366"} width={"20"} height={"20"} />;
       case "breakfast":
-        return <BreakfastIcon color={"white"} width={"20"} height={"20"} />;
+        return <BreakfastIcon color={"#003366"} width={"20"} height={"20"} />;
       case "pets":
-        return <PetsIcon color={"white"} width={"20"} height={"20"} />;
+        return <PetsIcon color={"#003366"} width={"20"} height={"20"} />;
     }
   };
 
@@ -120,7 +120,7 @@ const Venue = ({ venue }) => {
             </h3>
             <div>
               <p>1-{v.guests}</p>
-              <GuestIcon color={["#E87B7B", "#52A49A"]} />
+              <GuestIcon color={["#003366", "#52A49A"]} />
             </div>
           </InfoTop>
           <InfoBottom>

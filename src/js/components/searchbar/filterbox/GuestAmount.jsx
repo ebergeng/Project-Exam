@@ -11,8 +11,8 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   max-width: 150px;
-  background-color: var(--color-filterbox-dm);
-  color: var(--color-text-dm);
+  background-color: var(--color-filterbox);
+  color: var(--color-text);
   border-radius: 10px;
   padding: 5px;
 

@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   width: 100%;
   height: max-content;
   border-radius: 10px;
-  background-color: var(--color-background-dm);
+  background-color: var(--color-background);
   box-shadow: var(--box-shadow-dm);
   margin-bottom: 5px;
   align-items: center;

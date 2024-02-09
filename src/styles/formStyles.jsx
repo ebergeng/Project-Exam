@@ -37,7 +37,7 @@ export const FormButton = styled.input`
   font-weight: bolder;
   border-radius: 5px;
   box-shadow: var(--box-shadow);
-  color: var(--color-text-dm);
+  color: var(--color-text);
 
   &:hover {
     cursor: pointer;

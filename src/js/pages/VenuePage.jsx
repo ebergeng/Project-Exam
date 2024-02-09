@@ -30,12 +30,12 @@ const AbouteVenue = styled.div`
   padding: 0px 25px;
 
   h3 {
-    color: var(--color-text-dm);
+    color: var(--color-text);
     margin-bottom: 5px;
   }
   p {
     margin-top: 0;
-    color: var(--color-text-dm);
+    color: var(--color-text);
   }
 `;
 

@@ -39,7 +39,7 @@ const ProfileDetails = styled.div`
 
   div {
     margin: 0;
-    color: var(--color-text-dm);
+    color: var(--color-text);
   }
 
   .name {

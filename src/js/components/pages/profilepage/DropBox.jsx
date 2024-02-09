@@ -6,7 +6,7 @@ const Container = styled.div`
   position: relative;
   height: ${(props) => props.height};
   transition: height 0.2s ease-in-out;
-  border-bottom: 2px solid var(--color-text-dm);
+  border-bottom: 2px solid var(--color-text);
   overflow: hidden;
   z-index: 0;
 `;

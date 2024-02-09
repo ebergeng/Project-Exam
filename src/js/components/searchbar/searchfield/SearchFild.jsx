@@ -12,15 +12,15 @@ const Input = styled.input`
   border: none;
   width: 100%;
   text-align: center;
-  background-color: var(--color-searchbar-dm);
+  background-color: var(--color-searchbar);
   font-size: 1rem;
-  color: var(--color-text-dm);
+  color: var(--color-text);
   &::placeholder {
-    color: var(--color-text-toned-dm);
+    color: var(--color-text-toned);
   }
   &:hover,
   &:focus {
-    background-color: var(--color-searchbar-hover-dm);
+    background-color: var(--color-searchbar-hover);
   }
   &:focus::placeholder {
     color: transparent;
