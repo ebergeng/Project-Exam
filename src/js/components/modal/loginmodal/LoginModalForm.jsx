@@ -29,6 +29,9 @@ const LogInModalForm = () => {
   const modalStateLogin = useModalStateStore(
     (state) => state.setModalStateLogin,
   );
+  const modalStateRegister = useModalStateStore(
+    (state) => state.setModalStateRegister,
+  );
   const setProfileStore = useProfileStore((state) => state.setProfile);
 
   const {
@@ -45,8 +48,10 @@ const LogInModalForm = () => {
     console.log(response);
     if (response.errors) {
       setError(response.errors);
+      console.error(response.errors);
     } else {
       modalStateLogin(false);
+      modalStateRegister(false);
       setProfileStore({
         name: response.name,
         email: response.email,

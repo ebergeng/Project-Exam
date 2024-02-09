@@ -2,6 +2,8 @@ import styled, { keyframes } from "styled-components";
 import BackArrowIcon from "../icons/BackArrowIcon";
 import useModalStateStore from "../../storage/modalstate/useModalState";
 import { useEffect } from "react";
+import LogInModal from "./loginmodal/LoginModal";
+import SignUpModal from "./signupmodal/SignUpModal";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -35,9 +37,7 @@ const slideOut = keyframes`
 `;
 
 // eslint-disable-next-line no-unused-vars
-const ModalContent = styled(({ isClosing, ...divProps }) => (
-  <div {...divProps} />
-))`
+const ModalContent = styled.div`
   background: var(--color-modal);
   backdrop-filter: blur(5px);
   padding: 20px;
@@ -45,11 +45,13 @@ const ModalContent = styled(({ isClosing, ...divProps }) => (
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   height: 100%;
   width: 400px;
+  text-align: center;
 
   position: fixed;
   right: 0;
   top: 0;
-  animation: ${(props) => (props.isClosing ? slideIn : slideOut)} 0.3s ease-out;
+  animation: ${(props) => (props.isclosing === "true" ? slideIn : slideOut)}
+    0.3s ease-out;
 
   @media (max-width: 480px) {
     left: 0;
@@ -66,15 +68,23 @@ const CloseButton = styled.button`
 `;
 
 // eslint-disable-next-line react/prop-types
-const Modal = ({ isOpen, onClose, children }) => {
+const Modal = () => {
   const isClosing = useModalStateStore((state) => state.isClosing);
   const setIsClosing = useModalStateStore((state) => state.setIsClosing);
+  const loginIsOpen = useModalStateStore((state) => state.modalStateLogin);
+  const registerIsOpen = useModalStateStore(
+    (state) => state.modalStateRegister,
+  );
+  const { setModalStateRegister, setModalStateLogin } = useModalStateStore();
+  const closeModalLogin = () => setModalStateLogin(false);
+  const closeModalRegister = () => setModalStateRegister(false);
 
   const handleClose = () => {
     setIsClosing(true);
     setTimeout(() => {
       setIsClosing(false);
-      onClose();
+      closeModalLogin();
+      closeModalRegister();
     }, 250);
   };
 
@@ -82,19 +92,28 @@ const Modal = ({ isOpen, onClose, children }) => {
     if (isClosing) {
       setTimeout(() => {
         setIsClosing(false);
-        onClose();
+        closeModalLogin();
+        closeModalRegister();
       }, 250);
     }
   });
-  if (!isOpen) return null;
+
+  if (!loginIsOpen && !registerIsOpen) return null;
 
   return (
     <ModalOverlay onClick={handleClose}>
-      <ModalContent onClick={(e) => e.stopPropagation()} isClosing={isClosing}>
+      <ModalContent
+        onClick={(e) => e.stopPropagation()}
+        isclosing={isClosing.toString()}
+      >
         <CloseButton onClick={handleClose}>
           <BackArrowIcon />
         </CloseButton>
-        {children}
+        {loginIsOpen ? (
+          <LogInModal />
+        ) : null || registerIsOpen ? (
+          <SignUpModal />
+        ) : null}
       </ModalContent>
     </ModalOverlay>
   );

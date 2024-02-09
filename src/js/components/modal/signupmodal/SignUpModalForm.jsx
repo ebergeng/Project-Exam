@@ -5,6 +5,10 @@ import * as yup from "yup";
 import useManagerStateStore from "../../../storage/modalstate/useManagerState";
 import ToggleSwitch from "./ToggleSwitch";
 import { registerUser } from "../../../api/auth/registerUser";
+import DisplayMessage from "../../common/DisplayMessage";
+import { useState } from "react";
+import Loader from "../../common/Loader";
+import LoginButton from "../../header/buttons/LogInButton";
 
 const schima = yup
   .object({
@@ -21,13 +25,16 @@ const schima = yup
       .string()
       .required("password is a required")
       .min(8, "Must be 8 or more"),
-    url: yup.string(),
+    avatar: yup.string(),
     venueManager: yup.boolean(),
   })
   .required();
 
 const SignUpModalForm = () => {
   const managerState = useManagerStateStore((state) => state.managerState);
+  const [error, setError] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [registerd, setRegisterd] = useState(false);
 
   const {
     register,
@@ -39,41 +46,85 @@ const SignUpModalForm = () => {
   });
 
   async function onSubmit(data) {
+    setIsLoading(true);
     setValue("venueManager", managerState);
+    console.log(data);
 
     const response = await registerUser(data);
     console.log(response);
+    if (response.errors) {
+      setError(response.errors);
+      console.error(response.errors);
+    } else {
+      setRegisterd(true);
+    }
 
-    console.log(data);
+    setIsLoading(false);
+  }
+
+  if (isLoading) {
+    return <Loader />;
+  }
+  if (registerd) {
+    return (
+      <>
+        <DisplayMessage type={"info"}>Successfully registerd!</DisplayMessage>
+        <LoginButton />
+      </>
+    );
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <ToggleSwitch />
+    <>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <ToggleSwitch />
 
-      <Lable htmlFor="name">Name</Lable>
-      <Input type="name" id="name" name="name" {...register("name")} />
+        <Lable htmlFor="name">
+          {errors.name?.message ? (
+            <DisplayMessage type={"alert"}>
+              {errors.name?.message}
+            </DisplayMessage>
+          ) : (
+            "Name"
+          )}
+        </Lable>
+        <Input type="name" id="name" name="name" {...register("name")} />
 
-      <Lable htmlFor="email">Email</Lable>
-      <Input type="email" name="email" id="email" {...register("email")} />
+        <Lable htmlFor="email">
+          {errors.email?.message ? (
+            <DisplayMessage type={"alert"}>
+              {errors.email?.message}
+            </DisplayMessage>
+          ) : (
+            "Email"
+          )}
+        </Lable>
+        <Input type="email" name="email" id="email" {...register("email")} />
 
-      <Lable htmlFor="url">Url</Lable>
-      <Input type="url" id="url" name="url" {...register("url")} />
+        <Lable htmlFor="url">Profile Image Url</Lable>
+        <Input type="url" id="avatar" name="avatar" {...register("avatar")} />
 
-      <Lable htmlFor="password">Password</Lable>
-      <Input
-        type="password"
-        name="password"
-        id="password"
-        {...register("password")}
-      />
-      <p>
-        {errors.name?.message ||
-          errors.email?.message ||
-          errors.password?.message}
-      </p>
-      <FormButton type="submit" />
-    </Form>
+        <Lable htmlFor="password">
+          {errors.password?.message ? (
+            <DisplayMessage type={"alert"}>
+              {errors.password?.message}
+            </DisplayMessage>
+          ) : (
+            "Password"
+          )}
+        </Lable>
+        <Input
+          type="password"
+          name="password"
+          id="password"
+          {...register("password")}
+        />
+        <FormButton type="submit" />
+      </Form>
+      {error.length > 0 ? (
+        <DisplayMessage type={"alert"}>{error[0].message}</DisplayMessage>
+      ) : null}
+    </>
   );
 };
 

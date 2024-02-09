@@ -28,7 +28,7 @@ const HeaderNav = () => {
         {!accessToken ? (
           <>
             <Li>
-              <LoginButton />
+              <LoginButton key={"unik2"} />
             </Li>
             <Li>
               <SignUpButton />

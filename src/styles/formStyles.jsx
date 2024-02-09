@@ -15,6 +15,7 @@ export const Form = styled.form`
   padding: 0px 25px;
   overflow-y: auto;
   margin-bottom: 10px;
+  text-align: start;
 `;
 
 export const Lable = styled.label`
@@ -36,7 +37,7 @@ export const FormButton = styled.input`
   font-weight: bolder;
   border-radius: 5px;
   box-shadow: var(--box-shadow);
-  color: var(--color-background);
+  color: var(--color-text-dm);
 
   &:hover {
     cursor: pointer;

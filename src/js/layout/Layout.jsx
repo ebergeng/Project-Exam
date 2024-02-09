@@ -7,6 +7,7 @@ import SearchCall from "../components/common/SearchCall";
 import HomeCall from "../components/common/HomeCall";
 import { useEffect, useState } from "react";
 import HeroBannerProfile from "../components/herobanner/HerobannerProfile";
+import Modal from "../components/modal/Modal";
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -64,6 +65,7 @@ const Layout = ({ children }) => {
           <HomeCall />
         </>
       )}
+      <Modal />
     </>
   );
 };
