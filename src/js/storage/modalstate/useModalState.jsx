@@ -5,6 +5,8 @@ const useModalStateStore = create((set) => ({
   setModalStateLogin: (newState) => set({ modalStateLogin: newState }),
   modalStateRegister: false,
   setModalStateRegister: (newState) => set({ modalStateRegister: newState }),
+  isClosing: false,
+  setIsClosing: (newState) => set({ isClosing: newState }),
 }));
 
 export default useModalStateStore;

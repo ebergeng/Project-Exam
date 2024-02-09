@@ -97,13 +97,13 @@ const Venue = ({ venue }) => {
   const getIcon = (name) => {
     switch (name) {
       case "wifi":
-        return <WifiIcon color={"white"} width={"24"} height={"24"} />;
+        return <WifiIcon color={"white"} width={"20"} height={"20"} />;
       case "parking":
-        return <ParkingIcon color={"white"} width={"24"} height={"24"} />;
+        return <ParkingIcon color={"white"} width={"20"} height={"20"} />;
       case "breakfast":
-        return <BreakfastIcon color={"white"} width={"24"} height={"24"} />;
+        return <BreakfastIcon color={"white"} width={"20"} height={"20"} />;
       case "pets":
-        return <PetsIcon color={"white"} width={"24"} height={"24"} />;
+        return <PetsIcon color={"white"} width={"20"} height={"20"} />;
     }
   };
 

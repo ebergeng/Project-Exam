@@ -7,6 +7,7 @@ import { useState } from "react";
 import Loader from "../../common/Loader";
 import useModalStateStore from "../../../storage/modalstate/useModalState";
 import useProfileStore from "../../../storage/profileStore";
+import DisplayMessage from "../../common/DisplayMessage";
 
 const schima = yup
   .object({
@@ -17,13 +18,14 @@ const schima = yup
       .matches(/.+@stud\.noroff\.no$/, "Must be a valid @stud.noroff.no Email"),
     password: yup
       .string()
-      .required("password is a required")
+      .required("Password is a required")
       .min(8, "Must be 8 or more"),
   })
   .required();
 
 const LogInModalForm = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState([]);
   const modalStateLogin = useModalStateStore(
     (state) => state.setModalStateLogin,
   );
@@ -42,7 +44,7 @@ const LogInModalForm = () => {
     const response = await loginUser(data);
     console.log(response);
     if (response.errors) {
-      console.log("hey");
+      setError(response.errors);
     } else {
       modalStateLogin(false);
       setProfileStore({
@@ -62,19 +64,40 @@ const LogInModalForm = () => {
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <Lable htmlFor="email">Email</Lable>
-      <Input type="email" name="email" id="email" {...register("email")} />
-      <Lable htmlFor="password">Password</Lable>
-      <Input
-        type="password"
-        name="password"
-        id="password"
-        {...register("password")}
-      />
-      <p>{errors.email?.message || errors.password?.message}</p>
-      <FormButton type="submit" />
-    </Form>
+    <>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Lable htmlFor="email">
+          {errors.email?.message ? (
+            <DisplayMessage type={"alert"}>
+              {errors.email?.message}
+            </DisplayMessage>
+          ) : (
+            "Email"
+          )}
+        </Lable>
+        <Input type="email" name="email" id="email" {...register("email")} />
+        <Lable htmlFor="password">
+          {errors.password?.message ? (
+            <DisplayMessage type={"alert"}>
+              {errors.password?.message}
+            </DisplayMessage>
+          ) : (
+            "Password"
+          )}{" "}
+          <DisplayMessage type={"alert"}></DisplayMessage>
+        </Lable>
+        <Input
+          type="password"
+          name="password"
+          id="password"
+          {...register("password")}
+        />
+        <FormButton type="submit" value="Log Inn" />
+      </Form>
+      {error.length > 0 ? (
+        <DisplayMessage type={"alert"}>{error[0].message}</DisplayMessage>
+      ) : null}
+    </>
   );
 };
 

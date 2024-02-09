@@ -43,7 +43,7 @@ const CheckBoxWrapper = () => {
           height={"20"}
         />
       </Label>
-      <Label ison={filter.wifi} htmlFor="wifi">
+      <Label ison={filter.wifi.toString()} htmlFor="wifi">
         Wifi
       </Label>
 
@@ -60,7 +60,7 @@ const CheckBoxWrapper = () => {
           height={"20"}
         />
       </Label>
-      <Label ison={filter.parking} htmlFor="parking">
+      <Label ison={filter.parking.toString()} htmlFor="parking">
         Parking
       </Label>
 
@@ -77,7 +77,7 @@ const CheckBoxWrapper = () => {
           height={"20"}
         />
       </Label>
-      <Label ison={filter.breakfast} htmlFor="breakfast">
+      <Label ison={filter.breakfast.toString()} htmlFor="breakfast">
         Breakfast
       </Label>
 
@@ -94,7 +94,7 @@ const CheckBoxWrapper = () => {
           height={"20"}
         />
       </Label>
-      <Label ison={filter.pets} htmlFor="pets">
+      <Label ison={filter.pets.toString()} htmlFor="pets">
         Pets
       </Label>
     </Wrapper>

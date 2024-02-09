@@ -1,5 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import BackArrowIcon from "../icons/BackArrowIcon";
+import useModalStateStore from "../../storage/modalstate/useModalState";
+import { useEffect } from "react";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -16,6 +18,15 @@ const ModalOverlay = styled.div`
 
 const slideIn = keyframes`
     from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(100%);
+    }
+`;
+
+const slideOut = keyframes`
+    from {
         transform: translateX(100%);
     }
     to {
@@ -24,7 +35,9 @@ const slideIn = keyframes`
 `;
 
 // eslint-disable-next-line no-unused-vars
-const ModalContent = styled(({ ...divProps }) => <div {...divProps} />)`
+const ModalContent = styled(({ isClosing, ...divProps }) => (
+  <div {...divProps} />
+))`
   background: var(--color-modal);
   backdrop-filter: blur(5px);
   padding: 20px;
@@ -36,7 +49,7 @@ const ModalContent = styled(({ ...divProps }) => <div {...divProps} />)`
   position: fixed;
   right: 0;
   top: 0;
-  animation: ${slideIn} 0.3s ease-out forwards;
+  animation: ${(props) => (props.isClosing ? slideIn : slideOut)} 0.3s ease-out;
 
   @media (max-width: 480px) {
     left: 0;
@@ -54,15 +67,30 @@ const CloseButton = styled.button`
 
 // eslint-disable-next-line react/prop-types
 const Modal = ({ isOpen, onClose, children }) => {
+  const isClosing = useModalStateStore((state) => state.isClosing);
+  const setIsClosing = useModalStateStore((state) => state.setIsClosing);
+
   const handleClose = () => {
-    onClose();
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsClosing(false);
+      onClose();
+    }, 250);
   };
 
+  useEffect(() => {
+    if (isClosing) {
+      setTimeout(() => {
+        setIsClosing(false);
+        onClose();
+      }, 250);
+    }
+  });
   if (!isOpen) return null;
 
   return (
     <ModalOverlay onClick={handleClose}>
-      <ModalContent onClick={(e) => e.stopPropagation()}>
+      <ModalContent onClick={(e) => e.stopPropagation()} isClosing={isClosing}>
         <CloseButton onClick={handleClose}>
           <BackArrowIcon />
         </CloseButton>

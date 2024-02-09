@@ -14,6 +14,7 @@ export const Form = styled.form`
   width: 100%;
   padding: 0px 25px;
   overflow-y: auto;
+  margin-bottom: 10px;
 `;
 
 export const Lable = styled.label`
