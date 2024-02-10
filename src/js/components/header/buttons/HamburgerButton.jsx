@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import useModalStateStore from "../../../storage/modalstate/useModalState";
-import HamburgerIcon from "../../../ui/icons/HamburgerIcon/HamburgerIcon";
+import HamburgerIcon from "../../../ui/icons/hamburgericon/HamburgerIcon";
 
 const Button = styled.button`
   background-color: transparent;
