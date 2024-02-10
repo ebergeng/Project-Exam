@@ -189,7 +189,7 @@ const VenueAction = ({ venue }) => {
       </Facilities>
       <PriceWrapper>
         <PriceText>Price</PriceText>
-        <Price>{venue.price}</Price>
+        <Price>${venue.price}</Price>
       </PriceWrapper>
       <CTA onSubmit={handleSubmit(onSubmit)}>
         <p>{errors.dateFrom?.message || errors.dateTo?.message || " "}</p>

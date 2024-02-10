@@ -106,7 +106,7 @@ const ToggleDarkMode = () => {
     );
     root.style.setProperty(
       "--color-background-body",
-      darkMode ? "#333333" : "#c7c7c7",
+      darkMode ? "#333333" : "#cfcfcf",
     );
   });
 

@@ -124,7 +124,7 @@ const Venue = ({ venue }) => {
             </div>
           </InfoTop>
           <InfoBottom>
-            <Price>$ {venue.price},-</Price>
+            <Price>$ {venue.price}</Price>
             <Facilities>
               {v.meta.map((item) => (
                 <li key={item}>
