@@ -8,6 +8,7 @@ import HomeCall from "../components/common/HomeCall";
 import { useEffect, useState } from "react";
 import HeroBannerProfile from "../components/herobanner/HerobannerProfile";
 import Modal from "../components/modal/Modal";
+import Footer from "../components/footer/footer";
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -53,18 +54,22 @@ const Layout = ({ children }) => {
     <>
       <Header />
       <HeroBanner2>{contentForHeroBanner()}</HeroBanner2>
-      <main>{children}</main>
-      {location.pathname === "/" && showCalls ? (
-        <>
-          <SearchCall />
-          <HomeCall />
-        </>
-      ) : null || location.pathname === "/" ? null : (
-        <>
-          <SearchCall />
-          <HomeCall />
-        </>
-      )}
+      <main>
+        {children}
+        {location.pathname === "/" && showCalls ? (
+          <>
+            <SearchCall />
+            <HomeCall />
+          </>
+        ) : null || location.pathname === "/" ? null : (
+          <>
+            <SearchCall />
+            <HomeCall />
+          </>
+        )}
+      </main>
+
+      <Footer />
       <Modal />
     </>
   );

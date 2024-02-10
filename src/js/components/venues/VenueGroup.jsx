@@ -43,15 +43,21 @@ const VenueGroupHeader = styled.div`
   width: 100%;
   max-width: 1400px;
   display: flex;
-  align-items: end;
+  flex-direction: column;
   padding: 10px;
+  margin-top: 25px;
+  h1 {
+    color: var(--color-accent);
+    text-align: center;
+    margin-bottom: 0;
+  }
 
   .filter {
     color: var(--color-accent);
     font-size: 18px;
     font-weight: bold;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     p {
       color: var(--color-secondary);
@@ -75,6 +81,7 @@ const VenueGroup = () => {
   return (
     <Container>
       <VenueGroupHeader>
+        <h1>Venues</h1>
         {filterText ? (
           <div className="filter">
             Filter: <p>{filterText ? filterText : null}</p>

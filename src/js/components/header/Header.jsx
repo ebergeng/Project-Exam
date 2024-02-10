@@ -4,7 +4,7 @@ import HeaderNav from "./HeaderNav";
 
 const HeaderContainer = styled.header`
   background-color: var(--color-primary);
-  min-height: 50px;
+  max-height: 55px;
   display: flex;
   justify-content: space-between;
   padding: 5px;

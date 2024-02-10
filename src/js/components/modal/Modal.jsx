@@ -17,6 +17,7 @@ const ModalOverlay = styled.div`
   justify-content: right;
   align-items: center;
   z-index: 1000;
+  backdrop-filter: blur(5px);
 `;
 
 const slideIn = keyframes`

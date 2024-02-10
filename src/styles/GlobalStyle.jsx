@@ -57,7 +57,7 @@ const GlobalStyle = createGlobalStyle`
         --color-filterbox: #6161619d;
 
         
-
+        
         
         
     }
@@ -66,21 +66,23 @@ const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
         text-decoration: none;
+    }
 
-        
+    #root {
+        min-height: 100vh;
+        position: relative;
     }
 
     body{
         
         margin: 0;
-        min-height: 100vh;
         background-color: var(--color-background-body);
-        font-family: 'Oswald', Arial, Helvetica, sans-serif;
-        
+        font-family: 'Oswald', Arial, Helvetica, sans-serif; 
     }
     
     main {
         position: relative;
+        min-height: 70vh;
     }
 `;
 

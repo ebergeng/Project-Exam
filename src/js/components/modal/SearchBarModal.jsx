@@ -11,6 +11,7 @@ const ModalOverlay = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  backdrop-filter: blur(5px);
 `;
 
 // eslint-disable-next-line no-unused-vars
@@ -19,7 +20,7 @@ const ModalContent = styled(({ ...divProps }) => <div {...divProps} />)`
   width: 100%;
   max-width: 500px;
   position: fixed;
-  top: 20%;
+  top: 40%;
 `;
 
 const SearchBarModal = ({ isOpen, onClose, children }) => {
