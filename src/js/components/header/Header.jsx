@@ -9,6 +9,7 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   padding: 5px;
   align-items: center;
+  box-shadow: var(--box-shadow-dm);
 `;
 
 const Header = () => {

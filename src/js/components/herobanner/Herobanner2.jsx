@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   justify-content: center;
   height: fit-content;
   box-shadow: 0px 2px 4px #080808b7;
-  margin-top: 25px;
+  margin-top: 20px;
 
   background: linear-gradient(
     0deg,
