@@ -8,7 +8,6 @@ import HomeCall from "../components/common/HomeCall";
 import { useEffect, useState } from "react";
 import HeroBannerProfile from "../components/herobanner/HerobannerProfile";
 import Modal from "../components/modal/Modal";
-import ToggleDarkMode from "../components/header/buttons/ToggleDarkMode";
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -54,10 +53,7 @@ const Layout = ({ children }) => {
     <>
       <Header />
       <HeroBanner2>{contentForHeroBanner()}</HeroBanner2>
-      <main>
-        <ToggleDarkMode />
-        {children}
-      </main>
+      <main>{children}</main>
       {location.pathname === "/" && showCalls ? (
         <>
           <SearchCall />

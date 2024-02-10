@@ -10,7 +10,7 @@ const LogoContent = styled.div`
 const Logo = () => {
   return (
     <Link to={"/"}>
-      <LogoContent>HolyDaize</LogoContent>
+      <LogoContent>HolyDaze</LogoContent>
     </Link>
   );
 };

@@ -8,12 +8,12 @@ const LinkText = styled.span`
   font-size: ${(props) => (props.size === "large" ? "22px" : "14px")};
 `;
 
-const ProfileButton = ({ size }) => {
+const HomeButton = ({ size }) => {
   return (
-    <NavLink to="/profile" exact="true" activeclassname="active">
-      <LinkText size={size}>Profile</LinkText>
+    <NavLink to="/" exact="true" activeclassname="active">
+      <LinkText size={size}>Home</LinkText>
     </NavLink>
   );
 };
 
-export default ProfileButton;
+export default HomeButton;

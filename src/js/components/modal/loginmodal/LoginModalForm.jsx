@@ -32,6 +32,7 @@ const LogInModalForm = () => {
   const modalStateRegister = useModalStateStore(
     (state) => state.setModalStateRegister,
   );
+  const modalStateMenu = useModalStateStore((state) => state.setModalStateMenu);
   const setProfileStore = useProfileStore((state) => state.setProfile);
 
   const {
@@ -52,6 +53,7 @@ const LogInModalForm = () => {
     } else {
       modalStateLogin(false);
       modalStateRegister(false);
+      modalStateMenu(false);
       setProfileStore({
         name: response.name,
         email: response.email,

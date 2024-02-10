@@ -4,6 +4,7 @@ import useModalStateStore from "../../storage/modalstate/useModalState";
 import { useEffect } from "react";
 import LogInModal from "./loginmodal/LoginModal";
 import SignUpModal from "./signupmodal/SignUpModal";
+import MobileMenu from "./mobilemenu/MobileMenu";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -75,9 +76,13 @@ const Modal = () => {
   const registerIsOpen = useModalStateStore(
     (state) => state.modalStateRegister,
   );
-  const { setModalStateRegister, setModalStateLogin } = useModalStateStore();
+  const menuIsOpen = useModalStateStore((state) => state.modalStateMenu);
+
+  const { setModalStateRegister, setModalStateLogin, setModalStateMenu } =
+    useModalStateStore();
   const closeModalLogin = () => setModalStateLogin(false);
   const closeModalRegister = () => setModalStateRegister(false);
+  const closeModalMenu = () => setModalStateMenu(false);
 
   const handleClose = () => {
     setIsClosing(true);
@@ -85,6 +90,7 @@ const Modal = () => {
       setIsClosing(false);
       closeModalLogin();
       closeModalRegister();
+      closeModalMenu();
     }, 250);
   };
 
@@ -94,11 +100,12 @@ const Modal = () => {
         setIsClosing(false);
         closeModalLogin();
         closeModalRegister();
+        closeModalMenu();
       }, 250);
     }
   });
 
-  if (!loginIsOpen && !registerIsOpen) return null;
+  if (!loginIsOpen && !registerIsOpen && !menuIsOpen) return null;
 
   return (
     <ModalOverlay onClick={handleClose}>
@@ -113,6 +120,8 @@ const Modal = () => {
           <LogInModal />
         ) : null || registerIsOpen ? (
           <SignUpModal />
+        ) : null || menuIsOpen ? (
+          <MobileMenu />
         ) : null}
       </ModalContent>
     </ModalOverlay>

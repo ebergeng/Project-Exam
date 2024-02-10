@@ -4,16 +4,18 @@ import { useNavigate } from "react-router";
 
 const Button = styled.button`
   background-color: transparent;
-  color: white;
+  color: #c4c4c4;
   border: none;
   font-weight: bold;
+  font-size: ${(props) => (props.size === "large" ? "22px" : "14px")};
+  cursor: pointer;
 
   &:hover {
-    cursor: pointer;
+    color: #ffffff;
   }
 `;
 
-const LogOutButton = () => {
+const LogOutButton = ({ size }) => {
   const clearProfile = useProfileStore((state) => state.clearProfile);
   const navigate = useNavigate();
 
@@ -22,7 +24,11 @@ const LogOutButton = () => {
     navigate("/");
   }
 
-  return <Button onClick={handleLogOut}>Log out</Button>;
+  return (
+    <Button size={size} onClick={handleLogOut}>
+      Log out
+    </Button>
+  );
 };
 
 export default LogOutButton;

@@ -5,10 +5,10 @@ import useDarkModeStore from "../../../storage/darkmodeStor";
 const ToggleContainer = styled.div`
   position: absolute;
   display: inline-block;
-  right: 0;
-  top: 25px;
-  height: 14px;
+  left: 50%;
+  top: 10px;
   z-index: 999;
+  transform: translate(-50%);
   @media (max-width: 650px) {
     top: 65px;
   }
@@ -27,9 +27,12 @@ const ToggleWrapper = styled.div`
 `;
 
 const ToggleLable = styled.div`
-  color: var(--color-text);
+  color: #c4c4c4;
   font-size: 12px;
   font-weight: bold;
+  &:hover {
+    color: #ffffff;
+  }
 `;
 
 const ToggleInput = styled.input`
@@ -39,7 +42,7 @@ const ToggleInput = styled.input`
 `;
 
 const ToggleSlider = styled.span`
-  background-color: var(--color-text);
+  background-color: var(--color-searchbar);
   border-radius: 34px;
   position: relative;
   display: inline-block;
@@ -51,7 +54,7 @@ const ToggleSlider = styled.span`
     position: absolute;
     left: 2px;
     top: 2px;
-    background-color: var(--color-searchbar);
+    background-color: var(--color-text);
     height: 12px;
     width: 12px;
     border-radius: 50%;
@@ -103,7 +106,7 @@ const ToggleDarkMode = () => {
     );
     root.style.setProperty(
       "--color-background-body",
-      darkMode ? "#333333" : "#B4CEE8",
+      darkMode ? "#333333" : "#c7c7c7",
     );
   });
 
@@ -114,7 +117,7 @@ const ToggleDarkMode = () => {
   return (
     <ToggleContainer>
       <ToggleWrapper onClick={toggleClick}>
-        <ToggleLable>DM</ToggleLable>
+        <ToggleLable>Dark mode</ToggleLable>
 
         <Toggle>
           <ToggleInput
