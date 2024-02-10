@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   margin-bottom: 5px;
   align-items: center;
   &:hover {
-    background-color: var(--color-background-hover-dm);
+    background-color: var(--color-secondary-background-hover);
   }
   @media (max-width: 600px) {
     max-width: unset;
@@ -100,7 +100,7 @@ const BookedVenue = ({ booking }) => {
             </Info>
             <Info>
               <div className="head">Price</div>
-              <div className="data">{booking.venue.price}</div>
+              <div className="data">${booking.venue.price}</div>
             </Info>
           </div>
         </Wrapper>

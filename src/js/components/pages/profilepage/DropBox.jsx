@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState, useRef, useEffect } from "react";
 
 const Container = styled.div`
-  background: var(--color-secondary-background-dm);
+  background: var(--color-secondary-background);
   position: relative;
   height: ${(props) => props.height};
   transition: height 0.2s ease-in-out;
@@ -24,7 +24,7 @@ const Button = styled.button`
   border: none;
   cursor: pointer;
   &:hover {
-    background-color: var(--color-background-hover-dm);
+    background-color: var(--color-secondary-background-hover);
   }
 `;
 

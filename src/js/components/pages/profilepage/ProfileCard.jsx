@@ -5,14 +5,15 @@ import testImg from "../../../../assets/images/image2.jpeg";
 const Wrapper = styled.div`
   width: 100%;
   max-width: 250px;
-  height: 100%;
+  height: 250px;
   background-color: var(--color-primary);
   border-radius: 10px;
   box-shadow: var(--box-shadow-dm);
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
 
   @media (max-width: 600px) {
     max-width: unset;
@@ -20,13 +21,13 @@ const Wrapper = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  width: 100%;
   border-radius: 10px;
   overflow: hidden;
   max-width: 200px;
+
   img {
     width: 100%;
-    height: 100%;
+    max-height: 150px;
   }
 `;
 
@@ -39,7 +40,7 @@ const ProfileDetails = styled.div`
 
   div {
     margin: 0;
-    color: var(--color-text);
+    color: white;
   }
 
   .name {

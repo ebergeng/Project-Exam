@@ -108,6 +108,14 @@ const ToggleDarkMode = () => {
       "--color-background-body",
       darkMode ? "#333333" : "#cfcfcf",
     );
+    root.style.setProperty(
+      "--color-secondary-background",
+      darkMode ? "#464646" : "#F4F4F4",
+    );
+    root.style.setProperty(
+      "--color-secondary-background-hover",
+      darkMode ? "#3d3d3d" : "#e0dddd",
+    );
   });
 
   const toggleClick = () => {

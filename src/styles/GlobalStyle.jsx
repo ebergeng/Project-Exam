@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
         --color-modal: #00336680;
         --box-shadow: -1px 1px 5px #333333;
         --btn-hover: #4d968d;
-
+    
 
         --color-foreground-venue: #333333; 
         --color-background-venue: #F4F4F4; 
@@ -22,11 +22,11 @@ const GlobalStyle = createGlobalStyle`
 
 
         --color-background: #333333; 
-        --color-secondary-background-dm: #464646; 
+        --color-secondary-background: #464646; 
         --color-foreground-dm: #F4F4F4; 
         --color-text-toned: #C1C1C1;
         --color-text:#F4F4F4;
-        --color-background-hover-dm: #3d3d3d; 
+        --color-secondary-background-hover: #e0dddd; 
 
         --color-searchbar: #393939;
         --color-searchbar-hover: #888888;
