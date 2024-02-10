@@ -92,7 +92,7 @@ const UnderLineFooter = styled.div`
   height: 2px;
   position: absolute;
   right: 5px;
-  bottom: -2px;
+  bottom: -8px;
 `;
 const UnderLineHeader = styled.div`
   width: 80%;
