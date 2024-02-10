@@ -1,6 +1,25 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+
+@font-face {
+    font-family: 'Oswald';
+    src: local('Oswald'), url('../font/Oswald-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Oswald';
+    src: local('Oswald'),url('../font/Oswald-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+
+  // Gjenta for de andre fontvektighetene med riktige filnavn og font-weight verdier
+
+
     :root {
         --color-background-body: #cfcfcf;
         --color-primary: #003366;
@@ -37,7 +56,7 @@ const GlobalStyle = createGlobalStyle`
         --color-filterbox: #6161619d;
 
         
-
+        
     }
 
 
@@ -50,6 +69,7 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         min-height: 100vh;
         background-color: var(--color-background-body);
+        font-family: 'Oswald', Arial, sans-serif;
     }
     
     main {
