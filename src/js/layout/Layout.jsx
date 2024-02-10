@@ -8,7 +8,7 @@ import HomeCall from "../components/common/HomeCall";
 import { useEffect, useState } from "react";
 import HeroBannerProfile from "../components/herobanner/HerobannerProfile";
 import Modal from "../components/modal/Modal";
-import Footer from "../components/Footer/footer";
+import Footer from "../components/footer/Footer";
 
 const Layout = ({ children }) => {
   const location = useLocation();
