@@ -9,3 +9,14 @@
 .react-datepicker__tab-loop {
   position: absolute;
 }
+
+.react-datepicker__day--disabled {
+  color: #e87b7b !important; /* Grå farge for deaktiverte datoer */
+  background-color: #e87b7b56 !important; /* Lysere bakgrunn for deaktiverte datoer */
+  text-decoration: line-through;
+}
+
+.react-datepicker__day:not(.react-datepicker__day--disabled) {
+  color: #000000; /* Din ønskede farge for aktive datoer */
+  background-color: #eeeeee; /* Din ønskede bakgrunnsfarge for aktive datoer */
+}

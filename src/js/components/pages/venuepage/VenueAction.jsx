@@ -14,6 +14,8 @@ import { FormButton } from "../../../../styles/formStyles";
 import RatingStar from "../../../../assets/icons/star.png";
 import { bookVenue } from "../../../api/venues/bookVenue";
 import useProfileStore from "../../../storage/profileStore";
+import { getExcludedDates } from "./getExcludedDates";
+import useBookingModalStore from "../../../storage/modalstate/bookingModalState";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -131,9 +133,16 @@ const schema = yup
 const VenueAction = ({ venue }) => {
   const meta = Object.keys(venue.meta).filter((key) => venue.meta[key]);
   const token = useProfileStore((state) => state.profile.accessToken);
+  const setBookingModalOn = useBookingModalStore(
+    (state) => state.setBookingModalOn,
+  );
+  const setVenue = useBookingModalStore((state) => state.setVenue);
+
+  const excludedDates = getExcludedDates(venue.bookings);
 
   const {
     control,
+    watch,
     register,
     handleSubmit,
     formState: { errors },
@@ -141,10 +150,17 @@ const VenueAction = ({ venue }) => {
     resolver: yupResolver(schema),
   });
 
+  const dateFromValue = watch("dateFrom");
+  const dateToValue = watch("dateTo");
+
   async function onSubmit(data) {
     data.venueId = venue.id;
-    const send = await bookVenue(data, token);
-    console.log(send);
+    const book = await bookVenue(data, token);
+    if (book) {
+      console.log(book);
+      setVenue(venue.name, book.dateFrom, book.dateTo);
+      setBookingModalOn();
+    }
 
     //setIsLoading(true);
     //setIsLoading(false);
@@ -195,18 +211,20 @@ const VenueAction = ({ venue }) => {
         <p>{errors.dateFrom?.message || errors.dateTo?.message || " "}</p>
         <div className="date-selector">
           <Controller
-            control={control} // Dette kommer fra useForm()-hook.
+            control={control}
             name="dateFrom"
             render={({ field }) => (
               <ReactDatePicker
                 className="Date-picker"
                 placeholderText="From"
+                excludeDates={excludedDates}
                 onChange={(date) =>
                   field.onChange(date ? date.toISOString() : null)
                 }
                 selected={field.value ? new Date(field.value) : null}
                 isClearable
                 minDate={new Date()}
+                maxDate={dateToValue ? new Date(dateToValue) : null}
                 showDisabledMonthNavigation
                 id="dateFrom"
                 dateFormat="yyyy-MM-dd"
@@ -215,18 +233,19 @@ const VenueAction = ({ venue }) => {
           />
 
           <Controller
-            control={control} // Dette kommer fra useForm()-hook.
+            control={control}
             name="dateTo"
             render={({ field }) => (
               <ReactDatePicker
                 className="Date-picker"
                 placeholderText="To"
+                excludeDates={excludedDates}
                 onChange={(date) =>
                   field.onChange(date ? date.toISOString() : null)
                 }
                 selected={field.value ? new Date(field.value) : null}
                 isClearable
-                minDate={new Date()}
+                minDate={dateFromValue ? new Date(dateFromValue) : new Date()}
                 showDisabledMonthNavigation
                 id="dateTo"
                 dateFormat="yyyy-MM-dd"
@@ -249,11 +268,7 @@ const VenueAction = ({ venue }) => {
             </option>
           ))}
         </select>
-        {!localStorage.getItem("accessToken") ? (
-          <FormButton type="submit" value="Book" />
-        ) : (
-          "Please log in"
-        )}
+        {token ? <FormButton type="submit" value="Book" /> : "Please log in"}
       </CTA>
     </Wrapper>
   );

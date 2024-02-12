@@ -2,6 +2,8 @@ import useVenueStore from "../storage/apiStore";
 import styled from "styled-components";
 import VenueAction from "../components/pages/venuepage/VenueAction";
 import VenueImage from "../components/pages/venuepage/VenueImage";
+import BookedModal from "../components/modal/BookedModal";
+import useBookingModalStore from "../storage/modalstate/bookingModalState";
 
 const Container = styled.div`
   width: 100%;
@@ -40,6 +42,10 @@ const AbouteVenue = styled.div`
 `;
 
 const VenuePage = () => {
+  const bookingModal = useBookingModalStore((state) => state.bookingModal);
+  const setBookingModalOff = useBookingModalStore(
+    (state) => state.setBookingModalOff,
+  );
   const venue = useVenueStore((state) => state.singleVenue);
   if (!venue.name) {
     return <div>Loading...</div>;
@@ -62,6 +68,7 @@ const VenuePage = () => {
 
         <VenueAction venue={venue} />
       </Wrapper>
+      <BookedModal isOpen={bookingModal} onClose={setBookingModalOff} />
     </Container>
   );
 };
