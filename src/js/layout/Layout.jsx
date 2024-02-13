@@ -9,11 +9,14 @@ import { useEffect, useState } from "react";
 import HeroBannerProfile from "../components/herobanner/HerobannerProfile";
 import Modal from "../components/modal/Modal";
 import Footer from "../components/footer/Footer";
+import useProfileStore from "../storage/profileStore";
+import HeroBannerManager from "../components/herobanner/HeorBannerManager";
 
 const Layout = ({ children }) => {
   const location = useLocation();
   const [showCalls, setShowCalls] = useState(false);
-
+  const profile = useProfileStore((state) => state.profile);
+  console.log(profile.venueManager);
   useEffect(() => {
     const handleScroll = () => {
       const vh = Math.max(
@@ -34,12 +37,17 @@ const Layout = ({ children }) => {
   }, []);
 
   const contentForHeroBanner = () => {
-    switch (location.pathname) {
-      case "/":
-        return <HeroBannerHome />;
-      case "/profile":
-        return <HeroBannerProfile />;
+    if (profile.venueManager) {
+      return <HeroBannerManager />;
+    } else {
+      switch (location.pathname) {
+        case "/":
+          return <HeroBannerHome />;
+        case "/profile":
+          return <HeroBannerProfile />;
+      }
     }
+
     const match = matchPath({ path: "/venue/:id" }, location.pathname);
 
     if (match) {
@@ -50,10 +58,21 @@ const Layout = ({ children }) => {
     return null;
   };
 
+  if (profile.venueManager) {
+    return (
+      <>
+        <Header />
+        <HeroBanner2>{contentForHeroBanner()}</HeroBanner2>
+        <main>{children}</main>
+        <Footer />
+      </>
+    );
+  }
+
   return (
     <>
       <Header />
-      <HeroBanner2>{contentForHeroBanner()}</HeroBanner2>
+      {<HeroBanner2>{contentForHeroBanner()}</HeroBanner2>}
       <main>
         {children}
         {location.pathname === "/" && showCalls ? (

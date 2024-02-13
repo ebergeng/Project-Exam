@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import ShortCuts from "./ShortCuts";
 import Contact from "./Contact";
+import useProfileStore from "../../storage/profileStore";
 
 const Container = styled.footer`
   min-height: 170px;
@@ -24,9 +25,10 @@ const Container = styled.footer`
 `;
 
 const Footer = () => {
+  const profile = useProfileStore((state) => state.profile);
   return (
     <Container>
-      <ShortCuts />
+      {profile.venueManager ? null : <ShortCuts />}
       <Contact />
     </Container>
   );

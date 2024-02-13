@@ -3,7 +3,6 @@ import Oswald from "../font/Oswald-Regular.ttf";
 import OswaldBold from "../font/Oswald-Bold.ttf";
 
 const GlobalStyle = createGlobalStyle`
-
     @font-face {
             font-family: 'Oswald';
             src: local("Oswald"), url(${Oswald}) format("truetype");
@@ -17,10 +16,7 @@ const GlobalStyle = createGlobalStyle`
             font-weight: bold;
             font-style: normal;
         }
-
-   
-
-
+        
     :root {
         --color-background-body: #cfcfcf;
         --color-primary: #003366;

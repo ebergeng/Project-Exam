@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Logo from "./Logo";
 import HeaderNav from "./HeaderNav";
+import useProfileStore from "../../storage/profileStore";
+import HeaderNavManager from "./HeaderNavManager";
 
 const HeaderContainer = styled.header`
   background-color: var(--color-primary);
@@ -13,10 +15,12 @@ const HeaderContainer = styled.header`
 `;
 
 const Header = () => {
+  const profile = useProfileStore((state) => state.profile);
+
   return (
     <HeaderContainer>
       <Logo />
-      <HeaderNav />
+      {profile.venueManager ? <HeaderNavManager /> : <HeaderNav />}
     </HeaderContainer>
   );
 };

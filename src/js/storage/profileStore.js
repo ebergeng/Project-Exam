@@ -13,8 +13,8 @@ const useProfileStore = create(
     }),
 
     {
-      name: "profile", // name of the item in the storage (must be unique)
-      storage: createJSONStorage(() => localStorage), // (optional) by default, 'localStorage' is used
+      name: "profile",
+      storage: createJSONStorage(() => localStorage),
     },
   ),
 );

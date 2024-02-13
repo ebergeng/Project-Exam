@@ -3,16 +3,27 @@ import LayOut from "./js/layout/Layout";
 import HomePage from "./js/pages/HomePage";
 import VenuePage from "./js/pages/VenuePage";
 import ProfilePage from "./js/pages/ProfilePage";
+import useProfileStore from "./js/storage/profileStore";
+import ManagerPage from "./js/pages/ManagerPage";
+import { setColorTheme } from "./styles/setColorTheme";
 
 function App() {
+  const profile = useProfileStore((state) => state.profile);
+  setColorTheme();
   return (
     <BrowserRouter>
       <LayOut>
-        <Routes>
-          <Route index element={<HomePage />} />
-          <Route path="/venue/:id" element={<VenuePage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-        </Routes>
+        {!profile.venueManager ? (
+          <Routes>
+            <Route index element={<HomePage />} />
+            <Route path="/venue/:id" element={<VenuePage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+          </Routes>
+        ) : (
+          <Routes>
+            <Route index element={<ManagerPage />} />
+          </Routes>
+        )}
       </LayOut>
     </BrowserRouter>
   );
