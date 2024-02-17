@@ -157,13 +157,9 @@ const VenueAction = ({ venue }) => {
     data.venueId = venue.id;
     const book = await bookVenue(data, token);
     if (book) {
-      console.log(book);
       setVenue(venue.name, book.dateFrom, book.dateTo);
       setBookingModalOn();
     }
-
-    //setIsLoading(true);
-    //setIsLoading(false);
   }
 
   const getIcon = (name) => {

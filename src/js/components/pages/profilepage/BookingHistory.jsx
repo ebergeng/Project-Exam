@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import DropBox from "./DropBox";
 import useProfileStore from "../../../storage/profileStore";
-import BookedVenue from "./BookedVenue";
+import BookedVenue from "../../venues/BookedVenue";
 import styled from "styled-components";
 import { getBookings } from "../../../api/venues/getBookings";
+import Collapse from "../../common/DropBox";
 
 const Li = styled.li`
   display: block;
@@ -35,7 +35,7 @@ const BookingHistory = () => {
   }, []);
 
   return (
-    <DropBox contentName={"Booking History"} color={"#E87B7B"}>
+    <Collapse contentName={"Booking History"} color={"#E87B7B"}>
       <Ul>
         {bookings.map((booking, index) => (
           <Li key={booking.venue.id + index}>
@@ -43,7 +43,7 @@ const BookingHistory = () => {
           </Li>
         ))}
       </Ul>
-    </DropBox>
+    </Collapse>
   );
 };
 

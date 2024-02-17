@@ -5,11 +5,9 @@ import VenuePage from "./js/pages/VenuePage";
 import ProfilePage from "./js/pages/ProfilePage";
 import useProfileStore from "./js/storage/profileStore";
 import ManagerPage from "./js/pages/ManagerPage";
-import { setColorTheme } from "./styles/setColorTheme";
 
 function App() {
   const profile = useProfileStore((state) => state.profile);
-  setColorTheme();
   return (
     <BrowserRouter>
       <LayOut>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import useBookingModalStore from "../../storage/modalstate/bookingModalState";
-import PrimeryButton from "../common/PrimaryButton";
+import PrimeryButton from "../common/CtaButton";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -66,7 +66,6 @@ const BookedModal = ({ onClose, isOpen }) => {
   console.log(venue);
 
   const handleClose = () => {
-    console.log("hey");
     onClose();
   };
 

@@ -5,6 +5,15 @@ const useProfileStore = create(
   persist(
     (set) => ({
       profile: {},
+      setProfileVenues: (venues) =>
+        set((state) => ({ profile: { ...state.profile, venues: venues } })),
+      setBookingHistory: (venue) =>
+        set((state) => ({
+          profile: {
+            ...state.profile,
+            bookingHistory: [...state.profile.bookingHistory, venue],
+          },
+        })),
       setProfile: (profileData) =>
         set({
           profile: profileData,

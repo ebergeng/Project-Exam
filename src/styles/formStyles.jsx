@@ -6,6 +6,7 @@ export const Input = styled.input`
   border: none;
   font-size: 18px;
   margin-bottom: 10px;
+  width: 100%;
 `;
 
 export const Form = styled.form`
@@ -18,8 +19,8 @@ export const Form = styled.form`
   text-align: start;
 `;
 
-export const Lable = styled.label`
-  color: white;
+export const Label = styled.label`
+  color: var(--color-text);
   font-size: 18px;
   font-weight: 600;
 

@@ -16,7 +16,6 @@ const Layout = ({ children }) => {
   const location = useLocation();
   const [showCalls, setShowCalls] = useState(false);
   const profile = useProfileStore((state) => state.profile);
-  console.log(profile.venueManager);
   useEffect(() => {
     const handleScroll = () => {
       const vh = Math.max(

@@ -1,4 +1,4 @@
-import { Input, Lable, Form, FormButton } from "../../../../styles/formStyles";
+import { Input, Label, Form, FormButton } from "../../../../styles/formStyles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -73,7 +73,7 @@ const LogInModalForm = () => {
   return (
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Lable htmlFor="email">
+        <Label htmlFor="email">
           {errors.email?.message ? (
             <DisplayMessage type={"alert"}>
               {errors.email?.message}
@@ -81,9 +81,9 @@ const LogInModalForm = () => {
           ) : (
             "Email"
           )}
-        </Lable>
+        </Label>
         <Input type="email" name="email" id="email" {...register("email")} />
-        <Lable htmlFor="password">
+        <Label htmlFor="password">
           {errors.password?.message ? (
             <DisplayMessage type={"alert"}>
               {errors.password?.message}
@@ -92,7 +92,7 @@ const LogInModalForm = () => {
             "Password"
           )}{" "}
           <DisplayMessage type={"alert"}></DisplayMessage>
-        </Lable>
+        </Label>
         <Input
           type="password"
           name="password"

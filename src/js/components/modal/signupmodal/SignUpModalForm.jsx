@@ -1,4 +1,4 @@
-import { Input, Lable, Form, FormButton } from "../../../../styles/formStyles";
+import { Input, Label, Form, FormButton } from "../../../../styles/formStyles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -79,7 +79,7 @@ const SignUpModalForm = () => {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <ToggleSwitch />
 
-        <Lable htmlFor="name">
+        <Label htmlFor="name">
           {errors.name?.message ? (
             <DisplayMessage type={"alert"}>
               {errors.name?.message}
@@ -87,10 +87,10 @@ const SignUpModalForm = () => {
           ) : (
             "Name"
           )}
-        </Lable>
+        </Label>
         <Input type="name" id="name" name="name" {...register("name")} />
 
-        <Lable htmlFor="email">
+        <Label htmlFor="email">
           {errors.email?.message ? (
             <DisplayMessage type={"alert"}>
               {errors.email?.message}
@@ -98,13 +98,13 @@ const SignUpModalForm = () => {
           ) : (
             "Email"
           )}
-        </Lable>
+        </Label>
         <Input type="email" name="email" id="email" {...register("email")} />
 
-        <Lable htmlFor="url">Profile Image Url</Lable>
+        <Label htmlFor="url">Profile Image Url</Label>
         <Input type="url" id="avatar" name="avatar" {...register("avatar")} />
 
-        <Lable htmlFor="password">
+        <Label htmlFor="password">
           {errors.password?.message ? (
             <DisplayMessage type={"alert"}>
               {errors.password?.message}
@@ -112,7 +112,7 @@ const SignUpModalForm = () => {
           ) : (
             "Password"
           )}
-        </Lable>
+        </Label>
         <Input
           type="password"
           name="password"

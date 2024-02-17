@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import BookedVenueImg from "./BookedVenueImg";
+import BookedVenueImg from "../pages/profilepage/BookedVenueImg";
 
 const Container = styled.div`
   width: 100%;

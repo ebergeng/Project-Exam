@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import LogOutButton from "./buttons/LogoutButton";
+import ToggleDarkMode from "./buttons/ToggleDarkMode";
 
 const Nav = styled.nav`
   display: flex;
@@ -32,6 +33,7 @@ const Li = styled.li`
 const HeaderNavManager = () => {
   return (
     <Nav>
+      <ToggleDarkMode />
       <Ul>
         <Li>
           <LogOutButton />

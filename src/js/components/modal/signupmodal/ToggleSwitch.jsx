@@ -21,7 +21,7 @@ const ToggleWrapper = styled.div`
   }
 `;
 
-const ToggleLable = styled.div`
+const ToggleLabel = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 25px;
@@ -95,14 +95,14 @@ const ToggleSwitch = () => {
   return (
     <ToggleContainer>
       <ToggleWrapper onClick={toggleClick}>
-        <ToggleLable>
+        <ToggleLabel>
           <CustomerText color={managerState ? "#C8C8C8" : "white"}>
             Customer
           </CustomerText>
           <ManagerText color={managerState ? "white" : "#C8C8C8"}>
             Manager
           </ManagerText>
-        </ToggleLable>
+        </ToggleLabel>
 
         <Toggle>
           <ToggleInput

@@ -26,7 +26,7 @@ const ToggleWrapper = styled.div`
   }
 `;
 
-const ToggleLable = styled.div`
+const ToggleLabel = styled.div`
   color: #c4c4c4;
   font-size: 12px;
   font-weight: bold;
@@ -125,7 +125,7 @@ const ToggleDarkMode = () => {
   return (
     <ToggleContainer>
       <ToggleWrapper onClick={toggleClick}>
-        <ToggleLable>Dark mode</ToggleLable>
+        <ToggleLabel>Dark mode</ToggleLabel>
 
         <Toggle>
           <ToggleInput
