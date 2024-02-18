@@ -38,6 +38,8 @@ const ManagerPage = () => {
   const closeVenueModal = useCreateVenueStore(
     (state) => state.setCreateVenueModalOff,
   );
+
+  const reRender = useProfileStore((state) => state.changeTracker);
   const setVenues = useProfileStore((state) => state.setProfileVenues);
   const name = useProfileStore((state) => state.profile.name);
   const token = useProfileStore((state) => state.profile.accessToken);
@@ -60,7 +62,7 @@ const ManagerPage = () => {
     }
 
     handleBookings();
-  }, []);
+  }, [reRender]);
   return (
     <Container>
       <ProfileWrapper>

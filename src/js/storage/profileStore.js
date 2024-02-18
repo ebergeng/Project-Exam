@@ -4,7 +4,12 @@ import { persist, createJSONStorage } from "zustand/middleware";
 const useProfileStore = create(
   persist(
     (set) => ({
+      trackChange: 0,
       profile: {},
+
+      updateProfileStore: () =>
+        set((state) => ({ changeTracker: state.changeTracker + 1 })),
+
       setProfileVenues: (venues) =>
         set((state) => ({ profile: { ...state.profile, venues: venues } })),
       setBookingHistory: (venue) =>

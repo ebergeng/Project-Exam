@@ -32,7 +32,7 @@ const Span = styled.span``;
 
 const Collapse = ({ contentName, children, color }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [height, setHeight] = useState("25px");
+  const [height, setHeight] = useState("40px");
   const contentRef = useRef(null);
 
   const toggleMenu = () => {

@@ -14,6 +14,7 @@ const Ul = styled.ul`
 
 const MyVenues = () => {
   const venues = useProfileStore((state) => state.profile.venues);
+
   return (
     <Collapse contentName={"My Venues"} color={"#52A49A"}>
       <Ul>

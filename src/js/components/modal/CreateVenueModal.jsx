@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import CreateVenueForm from "./createVenueContent/CreateVenueForm";
 import BackArrowIcon from "../icons/BackArrowIcon";
+import useCreateVenueStore from "../../storage/modalstate/createVenueModalState";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -41,7 +42,11 @@ const Button = styled.button`
 `;
 
 const CreateVenueModal = ({ onClose, isOpen }) => {
+  const clearVenue = useCreateVenueStore((state) => state.clearUpdateVenue);
+  const venue = useCreateVenueStore((state) => state.updateVenue);
+
   const handleClose = () => {
+    clearVenue();
     onClose();
   };
 
@@ -50,7 +55,7 @@ const CreateVenueModal = ({ onClose, isOpen }) => {
   return (
     <ModalOverlay onClick={handleClose}>
       <ModalContent onClick={(e) => e.stopPropagation()}>
-        <h1>Create Venue</h1>
+        {venue ? <h1>Update Venue</h1> : <h1>Create Venue</h1>}
         <CreateVenueForm />
         <Button onClick={handleClose} type={"accent"}>
           <BackArrowIcon />

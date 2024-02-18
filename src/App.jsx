@@ -8,6 +8,7 @@ import ManagerPage from "./js/pages/ManagerPage";
 
 function App() {
   const profile = useProfileStore((state) => state.profile);
+
   return (
     <BrowserRouter>
       <LayOut>

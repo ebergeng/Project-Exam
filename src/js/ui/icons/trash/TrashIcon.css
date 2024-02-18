@@ -1,0 +1,5 @@
+.trash-icon:hover {
+  stroke: #e87b7b; /* Endrer kantlinjefargen ved hover */
+  cursor: pointer; /* Endrer musepekeren til en peker ved hover */
+  /* Du kan legge til flere stiler etter behov */
+}

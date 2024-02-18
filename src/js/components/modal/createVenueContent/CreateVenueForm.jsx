@@ -12,6 +12,8 @@ import PetsIcon from "../../../ui/icons/pets/PetsIcon";
 import styled from "styled-components";
 import { createVenue } from "../../../api/venues/createVenue";
 import useProfileStore from "../../../storage/profileStore";
+import useCreateVenueStore from "../../../storage/modalstate/createVenueModalState";
+import { updateVenue } from "../../../api/venues/updateVenue";
 
 const WrapperLeft = styled.div`
   max-width: 300px;
@@ -148,9 +150,10 @@ const schima = yup
   .required();
 
 const CreateVenueForm = () => {
-  const [error, setError] = useState([]);
+  const [error, setError] = useState("");
+  const reRender = useProfileStore((state) => state.updateProfileStore);
   const token = useProfileStore((state) => state.profile.accessToken);
-
+  const venue = useCreateVenueStore((state) => state.updateVenue);
   const {
     register,
     control,
@@ -159,23 +162,23 @@ const CreateVenueForm = () => {
   } = useForm({
     resolver: yupResolver(schima),
     defaultValues: {
-      name: "",
-      description: "",
+      name: venue ? venue.name : "",
+      description: venue ? venue.description : "",
       location: {
-        country: "",
-        continent: "",
-        zip: "",
-        city: "",
-        address: "",
+        country: venue ? venue.location.country : "",
+        continent: venue ? venue.location.continent : "",
+        zip: venue ? venue.location.zip : "",
+        city: venue ? venue.location.city : "",
+        address: venue ? venue.location.address : "",
       },
-      media: [],
-      maxGuests: 1,
-      price: "",
+      media: venue ? venue.media : [],
+      maxGuests: venue ? venue.maxGuests : 1,
+      price: venue ? venue.price : null,
       meta: {
-        wifi: false,
-        parking: false,
-        breakfast: false,
-        pets: false,
+        wifi: venue ? venue.meta.wifi : false,
+        parking: venue ? venue.meta.parking : false,
+        breakfast: venue ? venue.meta.breakfast : false,
+        pets: venue ? venue.meta.pets : false,
       },
     },
   });
@@ -186,10 +189,18 @@ const CreateVenueForm = () => {
   });
 
   async function onSubmit(data) {
-    const response = await createVenue(data, token);
-    console.log(response);
-    if (!response) {
-      setError("an error as accured");
+    if (venue) {
+      const response = await updateVenue(data, venue.id, token);
+      reRender();
+      if (!response) {
+        setError("An error has occured");
+      }
+    } else {
+      const response = await createVenue(data, token);
+      reRender();
+      if (!response) {
+        setError("An error has occured");
+      }
     }
   }
 
@@ -412,8 +423,8 @@ const CreateVenueForm = () => {
             {...register("description")}
           />
         </WrapperRight>
-
-        <FormButton type="submit" />
+        <DisplayMessage type={"alert"}>{error}</DisplayMessage>
+        <FormButton value={venue ? "Update" : "Create"} type="submit" />
       </Form>
       {error.length > 0 ? (
         <DisplayMessage type={"alert"}>{error[0].message}</DisplayMessage>

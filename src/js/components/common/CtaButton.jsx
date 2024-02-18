@@ -29,6 +29,21 @@ const Button = styled.button`
   border: none;
   box-shadow: var(--box-shadow);
   cursor: pointer;
+
+  &:hover {
+    background-color: ${(props) => {
+      switch (props.type) {
+        case "primary":
+          return "#478b83";
+        case "secondary":
+          return "#012952";
+        case "accent":
+          return "#d16969";
+        default:
+          return "gray";
+      }
+    }};
+  }
 `;
 
 /**
