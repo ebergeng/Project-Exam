@@ -10,7 +10,7 @@ export async function createVenue(venue, token) {
     body: JSON.stringify(venue),
   };
   try {
-    const response = await fetch(`${POST_VENUE_URL}1`, options);
+    const response = await fetch(`${POST_VENUE_URL}`, options);
     if (!response.ok) {
       throw new Error("Network Error");
     }

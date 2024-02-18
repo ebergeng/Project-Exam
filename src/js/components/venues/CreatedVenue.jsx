@@ -96,7 +96,7 @@ const CreatedVenue = ({ venue }) => {
   }
 
   async function handleDelete() {
-    deleteVenue(venue.id, token);
+    await deleteVenue(venue.id, token);
     reRender();
   }
 
