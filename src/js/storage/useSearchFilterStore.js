@@ -1,6 +1,5 @@
 import { create } from "zustand";
 
-// Define the store
 const useSearchFilterStore = create((set) => ({
   filter: {
     from: "",

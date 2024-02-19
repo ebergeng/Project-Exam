@@ -32,8 +32,6 @@ const ProfilePage = () => {
     (state) => state.setUpdateAvatarModalOff,
   );
 
-  console.log(updateAvatarModal);
-
   return (
     <Container>
       <ProfileWrapper>

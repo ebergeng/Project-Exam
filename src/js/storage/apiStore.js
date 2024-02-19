@@ -1,6 +1,5 @@
 import { create } from "zustand";
 
-// Define the store
 const useVenueStore = create((set) => ({
   dispayFilterdVenues: false,
   mediaUrls: [],
