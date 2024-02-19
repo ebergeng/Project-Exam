@@ -23,6 +23,12 @@ const useProfileStore = create(
         set({
           profile: profileData,
         }),
+
+      updateProfile: (profileUpdates) =>
+        set((state) => ({
+          profile: { ...state.profile, ...profileUpdates },
+        })),
+
       clearProfile: () => set({ profile: {} }),
     }),
 

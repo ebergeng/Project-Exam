@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import { getProfileVenues } from "../api/profile/getProfileVenues";
 import PastBookings from "../components/pages/ManagerPage.jsx/PastBookings";
 import UppcommingBookings from "../components/pages/ManagerPage.jsx/UppcommingBookings";
+import UpdateAvatarModal from "../components/modal/UpdateAvatarModal";
+import useUpdateAvaterModalState from "../storage/modalstate/UpdateAvaterModalState";
 
 const Container = styled.div`
   width: 100%;
@@ -37,6 +39,13 @@ const ManagerPage = () => {
   );
   const closeVenueModal = useCreateVenueStore(
     (state) => state.setCreateVenueModalOff,
+  );
+
+  const updateAvatarModal = useUpdateAvaterModalState(
+    (state) => state.updateAvatarModal,
+  );
+  const setUpdateAvatarModalOff = useUpdateAvaterModalState(
+    (state) => state.setUpdateAvatarModalOff,
   );
 
   const reRender = useProfileStore((state) => state.changeTracker);
@@ -76,6 +85,10 @@ const ManagerPage = () => {
         <UppcommingBookings bookings={bookings} token={token} />
       </BookingWrapper>
       <CreateVenueModal isOpen={creatVenueModal} onClose={closeVenueModal} />
+      <UpdateAvatarModal
+        isOpen={updateAvatarModal}
+        onClose={setUpdateAvatarModalOff}
+      />
     </Container>
   );
 };

@@ -2,6 +2,8 @@ import styled from "styled-components";
 import ProfileCard from "../components/pages/profilepage/ProfileCard";
 import MyBookings from "../components/pages/profilepage/MyBookings";
 import BookingHistory from "../components/pages/profilepage/BookingHistory";
+import UpdateAvatarModal from "../components/modal/UpdateAvatarModal";
+import useUpdateAvaterModalState from "../storage/modalstate/UpdateAvaterModalState";
 
 const Container = styled.div`
   width: 100%;
@@ -23,6 +25,15 @@ const ProfileWrapper = styled.div`
 const BookingWrapper = styled.div``;
 
 const ProfilePage = () => {
+  const updateAvatarModal = useUpdateAvaterModalState(
+    (state) => state.updateAvatarModal,
+  );
+  const setUpdateAvatarModalOff = useUpdateAvaterModalState(
+    (state) => state.setUpdateAvatarModalOff,
+  );
+
+  console.log(updateAvatarModal);
+
   return (
     <Container>
       <ProfileWrapper>
@@ -33,6 +44,10 @@ const ProfilePage = () => {
         <MyBookings />
         <BookingHistory />
       </BookingWrapper>
+      <UpdateAvatarModal
+        isOpen={updateAvatarModal}
+        onClose={setUpdateAvatarModalOff}
+      />
     </Container>
   );
 };
