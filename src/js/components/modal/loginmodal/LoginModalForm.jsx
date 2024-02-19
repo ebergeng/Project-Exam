@@ -46,7 +46,7 @@ const LogInModalForm = () => {
   async function onSubmit(data) {
     setIsLoading(true);
     const response = await loginUser(data);
-    console.log(response);
+
     if (response.errors) {
       setError(response.errors);
       console.error(response.errors);
@@ -73,7 +73,7 @@ const LogInModalForm = () => {
   return (
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Label htmlFor="email">
+        <Label color="white" htmlFor="email">
           {errors.email?.message ? (
             <DisplayMessage type={"alert"}>
               {errors.email?.message}
@@ -83,7 +83,7 @@ const LogInModalForm = () => {
           )}
         </Label>
         <Input type="email" name="email" id="email" {...register("email")} />
-        <Label htmlFor="password">
+        <Label color="white" htmlFor="password">
           {errors.password?.message ? (
             <DisplayMessage type={"alert"}>
               {errors.password?.message}
@@ -99,7 +99,7 @@ const LogInModalForm = () => {
           id="password"
           {...register("password")}
         />
-        <FormButton type="submit" value="Log Inn" />
+        <FormButton color="white" type="submit" value="Log Inn" />
       </Form>
       {error.length > 0 ? (
         <DisplayMessage type={"alert"}>{error[0].message}</DisplayMessage>

@@ -9,9 +9,6 @@ const ToggleContainer = styled.div`
   top: 10px;
   z-index: 999;
   transform: translate(-50%);
-  @media (max-width: 650px) {
-    top: 65px;
-  }
 `;
 
 const ToggleWrapper = styled.div`

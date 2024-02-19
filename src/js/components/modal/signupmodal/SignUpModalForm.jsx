@@ -48,10 +48,8 @@ const SignUpModalForm = () => {
   async function onSubmit(data) {
     setIsLoading(true);
     setValue("venueManager", managerState);
-    console.log(data);
 
     const response = await registerUser(data);
-    console.log(response);
     if (response.errors) {
       setError(response.errors);
       console.error(response.errors);
@@ -79,7 +77,7 @@ const SignUpModalForm = () => {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <ToggleSwitch />
 
-        <Label htmlFor="name">
+        <Label color="white" htmlFor="name">
           {errors.name?.message ? (
             <DisplayMessage type={"alert"}>
               {errors.name?.message}
@@ -90,7 +88,7 @@ const SignUpModalForm = () => {
         </Label>
         <Input type="name" id="name" name="name" {...register("name")} />
 
-        <Label htmlFor="email">
+        <Label color="white" htmlFor="email">
           {errors.email?.message ? (
             <DisplayMessage type={"alert"}>
               {errors.email?.message}
@@ -101,10 +99,12 @@ const SignUpModalForm = () => {
         </Label>
         <Input type="email" name="email" id="email" {...register("email")} />
 
-        <Label htmlFor="url">Profile Image Url</Label>
+        <Label color="white" htmlFor="url">
+          Profile Image Url
+        </Label>
         <Input type="url" id="avatar" name="avatar" {...register("avatar")} />
 
-        <Label htmlFor="password">
+        <Label color="white" htmlFor="password">
           {errors.password?.message ? (
             <DisplayMessage type={"alert"}>
               {errors.password?.message}
@@ -119,7 +119,7 @@ const SignUpModalForm = () => {
           id="password"
           {...register("password")}
         />
-        <FormButton type="submit" />
+        <FormButton color="white" type="submit" />
       </Form>
       {error.length > 0 ? (
         <DisplayMessage type={"alert"}>{error[0].message}</DisplayMessage>

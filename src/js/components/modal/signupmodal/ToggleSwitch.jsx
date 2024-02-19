@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useEffect } from "react";
 import useManagerStateStore from "../../../storage/modalstate/useManagerState";
 
 const ToggleContainer = styled.div`
@@ -75,18 +74,6 @@ const Toggle = styled.div`
 
 const ToggleSwitch = () => {
   const { managerState, setManagerState } = useManagerStateStore();
-
-  useEffect(() => {
-    const root = document.documentElement;
-    root.style.setProperty(
-      "--color-modal",
-      managerState ? "#52A49A80" : "#00336680",
-    );
-    root.style.setProperty(
-      "--color-secondary",
-      managerState ? "#003366" : "#52A49A",
-    );
-  });
 
   const toggleClick = () => {
     setManagerState(!managerState);

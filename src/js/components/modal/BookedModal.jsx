@@ -63,7 +63,6 @@ const BookedModal = ({ onClose, isOpen }) => {
     "en-GB",
     options,
   );
-  console.log(venue);
 
   const handleClose = () => {
     onClose();

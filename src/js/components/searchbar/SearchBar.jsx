@@ -85,8 +85,6 @@ const SearchBar = () => {
     if (filter.resultOpen) {
       setResultOpen(false);
     }
-
-    console.log(filterdVenues);
   }
 
   useEffect(() => {}, [searchFilterdVenues]);

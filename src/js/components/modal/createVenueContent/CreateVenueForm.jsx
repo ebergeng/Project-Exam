@@ -150,6 +150,9 @@ const schima = yup
   .required();
 
 const CreateVenueForm = () => {
+  const closeVenueModal = useCreateVenueStore(
+    (state) => state.setCreateVenueModalOff,
+  );
   const [error, setError] = useState("");
   const reRender = useProfileStore((state) => state.updateProfileStore);
   const token = useProfileStore((state) => state.profile.accessToken);
@@ -192,12 +195,14 @@ const CreateVenueForm = () => {
     if (venue) {
       const response = await updateVenue(data, venue.id, token);
       reRender();
+      closeVenueModal();
       if (!response) {
         setError("An error has occured");
       }
     } else {
       const response = await createVenue(data, token);
       reRender();
+      closeVenueModal();
       if (!response) {
         setError("An error has occured");
       }

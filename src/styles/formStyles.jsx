@@ -20,7 +20,8 @@ export const Form = styled.form`
 `;
 
 export const Label = styled.label`
-  color: var(--color-text);
+  color: ${(props) =>
+    props.color === "white" ? "white" : "var(--color-text)"};
   font-size: 18px;
   font-weight: 600;
 
@@ -38,7 +39,8 @@ export const FormButton = styled.input`
   font-weight: bolder;
   border-radius: 5px;
   box-shadow: var(--box-shadow);
-  color: var(--color-text);
+  color: ${(props) =>
+    props.color === "white" ? "white" : "var(--color-text)"};
 
   &:hover {
     cursor: pointer;
