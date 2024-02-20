@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useProfileStore from "../../../storage/profileStore";
 import BookedVenue from "../../venues/BookedVenue";
 import styled from "styled-components";
-import { getBookings } from "../../../api/venues/getBookings";
+import { getBookings } from "../../../api/booking/getBookings";
 import Collapse from "../../common/DropBox";
 
 const Li = styled.li`

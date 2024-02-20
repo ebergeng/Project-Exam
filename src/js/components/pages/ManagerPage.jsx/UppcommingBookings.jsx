@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Collapse from "../../common/DropBox";
 import { useEffect, useState } from "react";
-import { getBooking } from "../../../api/venues/getBooking";
+import { getBooking } from "../../../api/booking/getBooking";
 import BookedVenueManager from "../../venues/BookedVenueManager";
 
 const Li = styled.li`

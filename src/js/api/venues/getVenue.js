@@ -1,15 +1,14 @@
 import { GET_VENUES_URL } from "../constants.js";
 
-export async function getVenue(venuId) {
+export async function getVenue(venueId) {
   try {
-    const response = await fetch(`${GET_VENUES_URL}/${venuId}?_bookings=true`);
+    const response = await fetch(`${GET_VENUES_URL}/${venueId}?_bookings=true`);
     if (!response.ok) {
-      throw new Error("Network Error");
+      throw new Error("Failed to fetch venue data.");
     }
     const data = await response.json();
-    return data;
+    return { success: true, data };
   } catch (error) {
-    console.error("Fetching error: ", error);
-    return null;
+    return { success: false, error: error.message };
   }
 }

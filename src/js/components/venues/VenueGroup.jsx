@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Venue from "./VenueCard";
-import useVenueStore from "../../storage/apiStore";
+import useVenueStore from "../../storage/venueStore/venueStore";
 import { useState } from "react";
 import useSearchFilterStore from "../../storage/useSearchFilterStore";
 

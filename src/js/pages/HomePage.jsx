@@ -1,8 +1,8 @@
-import useVenueStore from "../storage/apiStore";
 import { getVenues } from "../api/venues/getVenues";
 import { useEffect } from "react";
 import SearchBar from "../components/searchbar/SearchBar";
 import VenueGroup from "../components/venues/VenueGroup";
+import useVenueStore from "../storage/venueStore/venueStore";
 
 const HomePage = () => {
   const addVenues = useVenueStore((state) => state.addVenues);
