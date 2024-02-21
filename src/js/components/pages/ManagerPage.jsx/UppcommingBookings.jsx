@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Collapse from "../../common/DropBox";
+import Collapse from "../../common/Collapse";
 import { useEffect, useState } from "react";
 import { getBooking } from "../../../api/venues/getBooking";
 import BookedVenueManager from "../../venues/BookedVenueManager";

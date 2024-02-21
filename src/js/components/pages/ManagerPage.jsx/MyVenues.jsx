@@ -1,4 +1,4 @@
-import Collapse from "../../common/DropBox";
+import Collapse from "../../common/Collapse";
 import useProfileStore from "../../../storage/profileStore";
 import styled from "styled-components";
 import CreatedVenue from "../../venues/CreatedVenue";
