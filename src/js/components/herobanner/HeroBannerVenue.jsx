@@ -4,7 +4,7 @@ import styled from "styled-components";
 import useSearchModalStore from "../../storage/modalstate/searchModalstate";
 import Loader from "../common/Loader";
 import useSingleVenueStore from "../../storage/venueStore/sigleVenueStore";
-import DisplayMessage from "../common/DisplayMessage";
+import useErrorStore from "../../storage/venueStore/errorStore";
 
 const Wrapper = styled.div`
   margin: 25px;
@@ -31,14 +31,14 @@ const Location = styled.div`
   }
 `;
 const HeroBannerVenue = ({ venueId }) => {
-  const { venue, setSingleVenue, clearSingleVenue, setError, error } =
-    useSingleVenueStore((state) => ({
+  const setError = useErrorStore((state) => state.setError);
+  const { venue, setSingleVenue, clearSingleVenue } = useSingleVenueStore(
+    (state) => ({
       venue: state.singleVenue,
       setSingleVenue: state.setSingleVenue,
       clearSingleVenue: state.clearSingleVenue,
-      setError: state.setError,
-      error: state.error,
-    }));
+    }),
+  );
   const setSearchStateOff = useSearchModalStore(
     (state) => state.setSearchStateOff,
   );
@@ -53,18 +53,9 @@ const HeroBannerVenue = ({ venueId }) => {
       }
     }
     fetchVenue();
-
     clearSingleVenue();
     setSearchStateOff();
   }, [venueId]);
-
-  if (error) {
-    return (
-      <Wrapper>
-        <DisplayMessage type={"alert"}>{error}</DisplayMessage>{" "}
-      </Wrapper>
-    );
-  }
 
   if (!venue.name) {
     return <Loader />;

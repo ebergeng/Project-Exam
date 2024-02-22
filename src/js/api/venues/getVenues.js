@@ -6,12 +6,11 @@ export async function getVenues(limit, offset) {
       `${GET_VENUES_URL}?limit=${limit}&offset=${offset}&_bookings=true`,
     );
     if (!response.ok) {
-      throw new Error("Network Error");
+      throw new Error("Failed to fetch venue data.");
     }
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Fetching error: ", error);
-    return null;
+    return { success: false, error: error.message };
   }
 }
