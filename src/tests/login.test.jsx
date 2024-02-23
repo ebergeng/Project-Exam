@@ -2,7 +2,7 @@
 import { render, fireEvent, waitFor } from "@testing-library/react";
 
 import * as authApi from "../js/api/auth/loginUser.js";
-import LogInModalForm from "../js/components/modal/loginmodal/LoginModalForm";
+import LogInModalForm from "../js/components/modal/loginmodal/LoginModalForm.jsx";
 
 jest.mock("../js/api/auth/loginUser.js", () => ({
   loginUser: jest.fn(),

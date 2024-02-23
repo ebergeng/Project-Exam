@@ -3,7 +3,7 @@ import useProfileStore from "../../../storage/profileStore";
 import BookedVenue from "../../venues/BookedVenue";
 import styled from "styled-components";
 import { getBookings } from "../../../api/booking/getBookings";
-import Collapse from "../../common/DropBox";
+import Collapse from "../../common/Collapse";
 
 const Li = styled.li`
   display: block;
