@@ -1,6 +1,6 @@
 # Project Exam
 
-Project Exam is a React-based web application designed to showcase a modern, scalable, and responsive UI/UX design. Utilizing a comprehensive stack including React 18, Styled Components, React Hook Form, Zustand for state management, and Vite as the build tool, this project aims to deliver a seamless and efficient user experience.
+This is my project Exam and it is a React-based web application designed to showcase a modern, scalable, and responsive UI/UX design. Utilizing a comprehensive stack including React 18, Styled Components, React Hook Form, Zustand for state management, and Vite as the build tool, this project aims to deliver a seamless and efficient user experience.
 
 ## Features
 
@@ -57,9 +57,11 @@ The project should now be running on http://localhost:5173.
 ### Running Tests
 To ensure the tests run smoothly, it is important to include the React import statement at the top of each test file that you wish to run. This is necessary due to the JSX syntax used within these files. Please make sure to add the following line at the beginning of your test files:
 
-    ```bash
+    ```JavaScript
     import React from "react";
     ```
+
+
 This import statement allows your test environment to correctly parse and understand the JSX syntax, ensuring that your tests can be executed without issues.
 
 ### Acknowledgments
