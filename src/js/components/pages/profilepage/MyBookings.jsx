@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getBookings } from "../../../api/venues/getBookings";
+import { getBookings } from "../../../api/booking/getBookings";
 import useProfileStore from "../../../storage/profileStore";
 import styled from "styled-components";
 import Collapse from "../../common/Collapse";

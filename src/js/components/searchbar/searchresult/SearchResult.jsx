@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import useSearchFilterStore from "../../../storage/useSearchFilterStore";
-import useVenueStore from "../../../storage/apiStore";
+import useVenueStore from "../../../storage/venueStore/venueStore";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 

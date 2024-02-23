@@ -13,12 +13,11 @@ export async function getProfileVenues(userName, token) {
   try {
     const response = await fetch(url, options);
     if (!response.ok) {
-      throw new Error("Network Error");
+      throw new Error("Failed to fetch venue data.");
     }
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Fetching error: ", error);
-    return null;
+    return { success: false, error: error.message };
   }
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import useVenueStore from "../../storage/apiStore";
 import BannerImages2 from "./BannerImage2";
+import useVenueStore from "../../storage/venueStore/venueStore";
 
 const HeroBannerHome = () => {
   const [numberOfElements, setNumberOfElements] = useState(6);

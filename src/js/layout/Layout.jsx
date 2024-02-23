@@ -11,11 +11,15 @@ import Modal from "../components/modal/Modal";
 import Footer from "../components/footer/Footer";
 import useProfileStore from "../storage/profileStore";
 import HeroBannerManager from "../components/herobanner/HeorBannerManager";
+import useErrorStore from "../storage/venueStore/errorStore";
+import HerobannerError from "../components/herobanner/HeroBannerError";
 
 const Layout = ({ children }) => {
   const location = useLocation();
   const [showCalls, setShowCalls] = useState(false);
   const profile = useProfileStore((state) => state.profile);
+  const error = useErrorStore((state) => state.error);
+
   useEffect(() => {
     const handleScroll = () => {
       const vh = Math.max(
@@ -30,12 +34,21 @@ const Layout = ({ children }) => {
         setShowCalls(false);
       }
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const clearError = useErrorStore((state) => state.clearError);
+
+  useEffect(() => {
+    clearError();
+  }, [location]);
+
   const contentForHeroBanner = () => {
+    if (error) {
+      return <HerobannerError />;
+    }
+
     if (profile.venueManager) {
       return <HeroBannerManager />;
     } else {
@@ -56,6 +69,18 @@ const Layout = ({ children }) => {
 
     return null;
   };
+
+  if (error) {
+    console.log(error);
+    return (
+      <>
+        <Header />
+        {<HeroBanner2>{contentForHeroBanner()}</HeroBanner2>}
+        <main></main>
+        <Footer />
+      </>
+    );
+  }
 
   if (profile.venueManager) {
     return (

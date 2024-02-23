@@ -9,7 +9,7 @@ import CheckBoxWrapper from "./filterbox/CheckBoxWrapper";
 import GuestAmount from "./filterbox/GuestAmount";
 import SearchButton from "./searchbutton/SearchButton";
 import SearchResult from "./searchresult/SearchResult";
-import useVenueStore from "../../storage/apiStore";
+import useVenueStore from "../../storage/venueStore/venueStore";
 
 const Container = styled.div`
   width: 100%;

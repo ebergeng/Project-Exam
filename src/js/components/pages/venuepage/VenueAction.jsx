@@ -12,10 +12,11 @@ import { useForm, Controller } from "react-hook-form";
 import "./datePicker.css";
 import { FormButton } from "../../../../styles/formStyles";
 import RatingStar from "../../../../assets/icons/star.png";
-import { bookVenue } from "../../../api/venues/bookVenue";
+import { bookVenue } from "../../../api/booking/bookVenue";
 import useProfileStore from "../../../storage/profileStore";
 import { getExcludedDates } from "./getExcludedDates";
 import useBookingModalStore from "../../../storage/modalstate/bookingModalState";
+import DisplayMessage from "../../common/DisplayMessage";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -100,7 +101,7 @@ const CTA = styled.form`
 `;
 
 const Rating = styled.div`
-  color: var(--color-text);
+  color: white;
   font-size: 18px;
   display: flex;
   justify-content: center;
@@ -125,6 +126,7 @@ const schema = yup
     dateTo: yup.string().nullable().required("Select a date to"),
     guests: yup
       .number()
+      .transform((value) => (isNaN(value) ? undefined : value))
       .required("How many are staying?")
       .min(1, "How many are staying?"),
   })
@@ -143,7 +145,6 @@ const VenueAction = ({ venue }) => {
   const {
     control,
     watch,
-    register,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -204,7 +205,12 @@ const VenueAction = ({ venue }) => {
         <Price>${venue.price}</Price>
       </PriceWrapper>
       <CTA onSubmit={handleSubmit(onSubmit)}>
-        <p>{errors.dateFrom?.message || errors.dateTo?.message || " "}</p>
+        <DisplayMessage type={"alert"}>
+          {errors.dateFrom?.message ||
+            errors.dateTo?.message ||
+            errors.guests?.message ||
+            ""}
+        </DisplayMessage>
         <div className="date-selector">
           <Controller
             control={control}
@@ -249,21 +255,26 @@ const VenueAction = ({ venue }) => {
             )}
           />
         </div>
-        <select
-          className="guests"
-          id="guests"
+        <Controller
+          control={control}
           name="guests"
-          {...register("guests")}
-        >
-          <option value="" selected disabled hidden>
-            Guests
-          </option>
-          {[...Array(venue.maxGuests)].map((_, i) => (
-            <option key={`guest${i}`} value={i + 1}>
-              {i + 1}
-            </option>
-          ))}
-        </select>
+          render={({ field }) => (
+            <select
+              {...field}
+              className="guests"
+              defaultValue="" // eller du kan styre dette dynamisk basert på tilstand
+            >
+              <option value="" disabled hidden>
+                Guests
+              </option>
+              {[...Array(venue.maxGuests)].map((_, i) => (
+                <option key={`guest${i}`} value={i + 1}>
+                  {i + 1}
+                </option>
+              ))}
+            </select>
+          )}
+        />
         {token ? <FormButton type="submit" value="Book" /> : "Please log in"}
       </CTA>
     </Wrapper>

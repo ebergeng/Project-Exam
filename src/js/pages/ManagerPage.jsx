@@ -11,6 +11,7 @@ import PastBookings from "../components/pages/ManagerPage.jsx/PastBookings";
 import UppcommingBookings from "../components/pages/ManagerPage.jsx/UppcommingBookings";
 import UpdateAvatarModal from "../components/modal/UpdateAvatarModal";
 import useUpdateAvaterModalState from "../storage/modalstate/UpdateAvaterModalState";
+import useErrorStore from "../storage/venueStore/errorStore";
 
 const Container = styled.div`
   width: 100%;
@@ -50,6 +51,7 @@ const ManagerPage = () => {
 
   const reRender = useProfileStore((state) => state.changeTracker);
   const setVenues = useProfileStore((state) => state.setProfileVenues);
+  const setError = useErrorStore((state) => state.setError);
   const name = useProfileStore((state) => state.profile.name);
   const token = useProfileStore((state) => state.profile.accessToken);
 
@@ -58,20 +60,26 @@ const ManagerPage = () => {
   useEffect(() => {
     async function handleBookings() {
       const data = await getProfileVenues(name, token);
-      setVenues(data);
-      let tempBookings = [];
-      data.forEach((venue) => {
-        if (venue.bookings.length > 0) {
-          venue.bookings.map((booking) => {
-            tempBookings = [...tempBookings, booking];
-          });
-        }
-      });
-      setBookings(tempBookings);
+
+      if (data.error) {
+        setError(data.error);
+      } else {
+        setVenues(data);
+        let tempBookings = [];
+        data.forEach((venue) => {
+          if (venue.bookings.length > 0) {
+            venue.bookings.map((booking) => {
+              tempBookings = [...tempBookings, booking];
+            });
+          }
+        });
+        setBookings(tempBookings);
+      }
     }
 
     handleBookings();
   }, [reRender]);
+
   return (
     <Container>
       <ProfileWrapper>
