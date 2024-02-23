@@ -72,7 +72,6 @@ const Layout = ({ children }) => {
 
   if (error) {
     console.log(error);
-
     return (
       <>
         <Header />
