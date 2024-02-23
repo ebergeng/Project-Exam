@@ -56,9 +56,10 @@ The project should now be running on http://localhost:5173.
 
 ### Running Tests
 To ensure the tests run smoothly, it is important to include the React import statement at the top of each test file that you wish to run. This is necessary due to the JSX syntax used within these files. Please make sure to add the following line at the beginning of your test files:
+    
     ```bash
     import React from "react";
-
+    
 This import statement allows your test environment to correctly parse and understand the JSX syntax, ensuring that your tests can be executed without issues.
 
 ### Acknowledgments
