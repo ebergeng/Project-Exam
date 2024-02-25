@@ -122,7 +122,7 @@ const ToggleDarkMode = () => {
   return (
     <ToggleContainer>
       <ToggleWrapper onClick={toggleClick}>
-        <ToggleLabel>Dark mode</ToggleLabel>
+        <ToggleLabel>{darkMode ? "Dark Mode" : "Light Mode"}</ToggleLabel>
 
         <Toggle>
           <ToggleInput

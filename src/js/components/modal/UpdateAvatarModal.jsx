@@ -58,6 +58,8 @@ const Button = styled.button`
 const ModalHeader = styled.div`
   position: relative;
   width: 100%;
+  display: flex;
+  justify-content: end;
 `;
 
 const UpdateAvatarModal = ({ onClose, isOpen }) => {
