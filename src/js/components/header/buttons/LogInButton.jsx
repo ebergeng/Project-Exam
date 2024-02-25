@@ -21,7 +21,7 @@ const LoginButton = ({ size }) => {
   return (
     <>
       <Button size={size} onClick={openModal} activeclassname="active">
-        Log In
+        Login
       </Button>
     </>
   );

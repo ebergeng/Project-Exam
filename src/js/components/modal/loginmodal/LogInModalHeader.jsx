@@ -9,7 +9,7 @@ const LoginModalHeader = () => {
   return (
     <HeaderText>
       HolyDaze <br />
-      Log In
+      Login
     </HeaderText>
   );
 };

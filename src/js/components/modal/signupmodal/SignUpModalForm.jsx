@@ -119,7 +119,7 @@ const SignUpModalForm = () => {
           id="password"
           {...register("password")}
         />
-        <FormButton color="white" type="submit" />
+        <FormButton color="white" type="submit" value="Sign Up" />
       </Form>
       {error.length > 0 ? (
         <DisplayMessage type={"alert"}>{error[0].message}</DisplayMessage>

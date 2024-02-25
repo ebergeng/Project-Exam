@@ -99,7 +99,7 @@ const LogInModalForm = () => {
           id="password"
           {...register("password")}
         />
-        <FormButton color="white" type="submit" value="Log Inn" />
+        <FormButton color="white" type="submit" value="Login" />
       </Form>
       {error.length > 0 ? (
         <DisplayMessage type={"alert"}>{error[0].message}</DisplayMessage>
