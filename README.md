@@ -1,5 +1,7 @@
 # Project Exam
 
+![screenshot of my project exam front page](src/project-exam.png)
+
 This is my project Exam and it is a React-based web application designed to showcase a modern, scalable, and responsive UI/UX design. Utilizing a comprehensive stack including React 18, Styled Components, React Hook Form, Zustand for state management, and Vite as the build tool, this project aims to deliver a seamless and efficient user experience.
 
 ## Features
